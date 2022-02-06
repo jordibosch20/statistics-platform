@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavbarTap } from 'src/app/entities/routingTap';
 
 @Component({
   selector: 'header-menu',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  public headerOptions: Array<NavbarTap> = [
+    new NavbarTap('Hypothesis testing', ''),
+    new NavbarTap('Confidence Interval', ''),
+    new NavbarTap('Regression coefficietnts', ''),
+    new NavbarTap('Distributions grphs', '')
+  ];
+
 
 }

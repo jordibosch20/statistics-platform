@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class WelcomePageComponent {
 
+  public statisticsTypes: Array<string> = [];
+
 
 }
