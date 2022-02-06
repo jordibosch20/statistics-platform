@@ -1,8 +1,9 @@
 <div class="title">
   <div class="wrapper-title">
     <h2>Statistics World</h2>
-    <div *ngFor="let headerOption of headerOptions">
+    <a *ngFor="let headerOption of headerOptions" routerLink="/hypothesis-testing">
       {{headerOption.name}}
-    </div>
+    </a>
   </div>
 </div>
+<router-outlet></router-outlet>
