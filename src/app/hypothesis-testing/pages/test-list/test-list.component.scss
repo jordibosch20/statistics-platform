@@ -1,0 +1,23 @@
+.wrapper {
+  margin: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  height: 85vh;
+  padding: 8px;
+
+  .leftPanel {
+    border: 1px solid orange;
+    padding: 8px;
+  }
+
+  .middlePanel {
+    border: 1px solid orange;
+    padding: 8px;
+  }
+
+  .rightPanel {
+    border: 1px solid orange;
+    padding: 8px;
+  }
+}
