@@ -1,7 +1,7 @@
 export class NavbarTap {
 
-    public url: string;
     public name: string;
+    public url: string;
 
     constructor(name: string, url: string) {
         this.name = name;

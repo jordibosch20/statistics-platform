@@ -1,7 +1,7 @@
 <div class="title">
   <div class="wrapper-title">
     <h2>Statistics World</h2>
-    <a *ngFor="let headerOption of headerOptions" routerLink="/hypothesis-testing">
+    <a *ngFor="let headerOption of headerOptions" [routerLink]="headerOption.url">
       {{headerOption.name}}
     </a>
   </div>

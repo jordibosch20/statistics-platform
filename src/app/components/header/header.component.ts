@@ -10,9 +10,9 @@ export class HeaderComponent {
 
   public headerOptions: Array<NavbarTap> = [
     new NavbarTap('Hypothesis testing', 'hypothesis-testing'),
-    new NavbarTap('Confidence Interval', ''),
-    new NavbarTap('Regression coefficietnts', ''),
-    new NavbarTap('Distributions grphs', '')
+    new NavbarTap('Confidence Interval', '/confidence-interval'),
+    new NavbarTap('Regression coefficients', '/regression-coefficients'),
+    new NavbarTap('Distributions graphs', '/distribution-graphs')
   ];
 
 }
