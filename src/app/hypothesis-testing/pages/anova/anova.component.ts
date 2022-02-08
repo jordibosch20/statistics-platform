@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'anova',
   templateUrl: './anova.component.html',
   styleUrls: ['./anova.component.scss']
 })
-export class AnovaComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class AnovaComponent {
 
 }

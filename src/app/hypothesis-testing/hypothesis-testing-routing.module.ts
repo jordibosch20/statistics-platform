@@ -7,7 +7,7 @@ import { TestListComponent } from 'src/app/hypothesis-testing/pages/test-list/te
 
 const routes: Routes = [
   {
-    path: '', component: HypothesisTestingComponent,
+    path: 'hypothesis-testing', component: HypothesisTestingComponent,
     children: [
       {
         path: 'testList',
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        component: TestListComponent
+        component: AnovaComponent
       }
     ]
   },
