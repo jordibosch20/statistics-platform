@@ -5,6 +5,7 @@ import { HypothesisTestingModule } from 'src/app/hypothesis-testing/hypothesis-t
 import { WelcomePageModule } from 'src/app/welcome-page/welcome-page.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DistributionsModule } from './distributions/distributions.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     ComponentsModule,
     WelcomePageModule,
-    HypothesisTestingModule
+    HypothesisTestingModule,
+    DistributionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

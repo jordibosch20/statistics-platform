@@ -12,7 +12,7 @@ export class HeaderComponent {
     new NavbarTap('Hypothesis testing', 'hypothesis-testing/testList'),
     new NavbarTap('Confidence Interval', '/confidence-interval'),
     new NavbarTap('Regression coefficients', '/regression-coefficients'),
-    new NavbarTap('Distributions graphs', '/distribution-graphs')
+    new NavbarTap('Distributions graphs', '/distributions')
   ];
 
 }
