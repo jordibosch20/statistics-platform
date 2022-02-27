@@ -1,17 +1,19 @@
 .wrapper {
-  margin: 8px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 8px;
   height: 85vh;
+  margin: 8px;
 
   .leftPanel {
-    border: 1px solid orange;
+    border: 1.5px solid orange;
     padding: 8px;
+    box-shadow: 0px 0px 1px #444;
   }
 
   .rightPanel {
-    border: 1px solid orange;
+    border: 1.5px solid orange;
+    box-shadow: 0px 0px 1px #444;
     padding: 8px;
 
     li {

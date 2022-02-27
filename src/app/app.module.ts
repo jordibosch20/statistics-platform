@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HypothesisTestingModule } from 'src/app/hypothesis-testing/hypothesis-testing.module';
 import { WelcomePageModule } from 'src/app/welcome-page/welcome-page.module';
@@ -18,7 +19,8 @@ import { DistributionsModule } from './distributions/distributions.module';
     ComponentsModule,
     WelcomePageModule,
     HypothesisTestingModule,
-    DistributionsModule
+    DistributionsModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

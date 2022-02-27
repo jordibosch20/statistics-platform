@@ -1,6 +1,7 @@
 div.title {
-
+  margin: 0px;
   background-color: brown;
+  width: 100%;
 
   .wrapper-title {
     display: flex;
@@ -12,6 +13,8 @@ div.title {
     h2 {
       margin: 8px;
     }
+
+    color: white;
 
     a {
       color: white;
