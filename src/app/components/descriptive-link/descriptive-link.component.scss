@@ -1,14 +1,14 @@
 .container {
-  height: 32px;
 
+  height: 32px;
   display: flex;
   align-items: center;
 
   a {
     font-weight: bold;
   }
+}
 
-  a:hover {
-    cursor: pointer;
-  }
+.container:hover {
+  cursor: pointer;
 }
