@@ -10,9 +10,13 @@
     flex-direction: column;
 
     .children {
-      border: 1px solid rgb(226, 213, 213);
-      background-color: rgb(235, 200, 189);
-      padding: 8px;
+      border: 2px solid rgb(243, 216, 210);
+      padding-left: 8px;
+      margin: 4px;
+    }
+
+    .children:hover {
+      box-shadow: 3px 3px rgb(243, 216, 210);
     }
 
   }
