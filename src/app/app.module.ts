@@ -7,6 +7,7 @@ import { WelcomePageModule } from 'src/app/welcome-page/welcome-page.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DistributionsModule } from './distributions/distributions.module';
+import { DescriptiveStatisticsModule } from './descriptive-statistics/descriptive-statistics.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DistributionsModule } from './distributions/distributions.module';
     WelcomePageModule,
     HypothesisTestingModule,
     DistributionsModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    DescriptiveStatisticsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

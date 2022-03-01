@@ -1,0 +1,20 @@
+.container {
+  margin: 32px;
+
+  .title {
+    text-align: center;
+  }
+
+  .wrapper-items {
+    display: flex;
+    flex-direction: column;
+
+    .children {
+      border: 1px solid rgb(226, 213, 213);
+      background-color: rgb(235, 200, 189);
+      padding: 8px;
+    }
+
+  }
+
+}
