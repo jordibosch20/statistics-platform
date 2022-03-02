@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DescriptiveStatisticsComponent } from 'src/app/descriptive-statistics/descriptive-statistics/descriptive-statistics.component';
+import { DescriptiveStatisticsComponent } from 'src/app/descriptive-statistics/descriptive-statistics.component';
 import { DistributionsComponent } from 'src/app/distributions/distributions.component';
 import { HypothesisTestingComponent } from 'src/app/hypothesis-testing/hypothesis-testing.component';
 import { WelcomePageComponent } from 'src/app/welcome-page/welcome-page.component';
