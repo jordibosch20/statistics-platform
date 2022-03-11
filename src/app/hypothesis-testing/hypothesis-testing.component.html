@@ -1,4 +1,9 @@
 <header-menu></header-menu>
 <div class="container">
-  <router-outlet></router-outlet>
+  <div class="side-modal">
+    <side-modal [title]="'Most used calculators'"></side-modal>
+  </div>
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+  </div>
 </div>

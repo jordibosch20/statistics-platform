@@ -4,12 +4,14 @@ import { HeaderRoutingModule } from 'src/app/components/header/header-routing.co
 import { DescriptiveLinkComponent } from './descriptive-link/descriptive-link.component';
 import { H2TitleComponent } from './h2-title/h2-title.component';
 import { HeaderComponent } from './header/header.component';
+import { NavigationTabComponent } from './navigation-tab/navigation-tab.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     H2TitleComponent,
-    DescriptiveLinkComponent
+    DescriptiveLinkComponent,
+    NavigationTabComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
   exports: [
     HeaderComponent,
     H2TitleComponent,
-    DescriptiveLinkComponent
+    DescriptiveLinkComponent,
+    NavigationTabComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'descriptive-link',
@@ -11,8 +11,9 @@ export class DescriptiveLinkComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() url: string = '';
+  @Input() center: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router) { }
 
   navigate(): void {
     this.router.navigate(['/descriptive-statistics/variance']);

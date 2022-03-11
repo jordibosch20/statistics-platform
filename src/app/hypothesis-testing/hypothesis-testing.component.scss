@@ -1,3 +1,8 @@
-.container {
-  margin: 8px;
+div.container {
+  display: flex;
+  flex-direction: row;
+
+  .wrapper {
+    flex-grow: 1;
+  }
 }

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { HypothesisTestingComponentsModule } from 'src/app/hypothesis-testing/components/components.module';
 import { HypothesesRoutingModule } from 'src/app/hypothesis-testing/hypothesis-testing-routing.module';
 import { HypothesisTestingComponent } from 'src/app/hypothesis-testing/hypothesis-testing.component';
-import { ComponentsModule } from '../components/components.module';
 import { AnovaComponent } from './pages/anova/anova.component';
 import { ChiSquaredComponent } from './pages/chi-squared/chi-squared.component';
 import { TestListComponent } from './pages/test-list/test-list.component';
@@ -15,6 +16,7 @@ import { TestListComponent } from './pages/test-list/test-list.component';
     ],
     imports: [
         ComponentsModule,
+        HypothesisTestingComponentsModule,
         HypothesesRoutingModule
     ],
     exports: [
