@@ -1,0 +1,22 @@
+div.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  box-sizing: content-box;
+
+  descriptive-calculator {
+    width: 50%;
+  }
+
+  div.explanation {
+    width: 60%;
+    margin: 32px;
+    font-size: 12px;
+  }
+}
+
+
+.inline {
+  display: inline-block;
+}

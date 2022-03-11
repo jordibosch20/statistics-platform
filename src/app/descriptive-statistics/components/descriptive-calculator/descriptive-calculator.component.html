@@ -1,0 +1,13 @@
+<div class="container-title">
+  <h2-title [title]="title"></h2-title>
+  <div class="form">
+    <div class="toggle">
+      <div class="children left" [class.selected]="selected === 'comma'" (click)="commaSelected()">Comma</div>
+      <div class="children" [class.selected]="selected === 'breakline'" (click)="breakSelected()">Break line</div>
+      <div class=" children right" [class.selected]="selected === 'space'" (click)="spaceSelected()">Spaces</div>
+    </div>
+    <textarea [(ngModel)]="parsedText"
+      placeholder="Choose the type of delimiter that you want and insert your data in the format you desire"></textarea>
+    <button (click)="parseText()">Compute variance</button>
+  </div>
+</div>

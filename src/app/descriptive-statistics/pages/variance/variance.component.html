@@ -1,0 +1,27 @@
+<div class="container">
+  <descriptive-calculator [title]="'Variance'" (observationsList)=computeVariance($event)></descriptive-calculator>
+  <div class="explanation">
+    The variance is the expectation of the standard deviation <div class="inline"
+      [mathjax]="'$\Var(X) = \\mathop{\\mathbb{E}}\[(X - \\mu)^2\]$'"></div>.<br>
+    In a given set of discrete data, this is calculated using the following formula <span class="inline"
+      [mathjax]="'$\\sum_{i = 0}^{i = n}(x_{i}-\\mu)^2$'"></span>: <br><br>
+    This gives a notion of the dipersion of the data with respect to the mean value. Small values of the variance
+    mean,
+    general values are distributed not far from the mean with low disperison <span style="color:red">red
+      distribution</span>).<br>On the
+    other hand,
+    large values of the variance, tell us the distribution has high dispersion in the data <span style="color:blue">blue
+      distribution</span><br>
+    <img [src]="'assets/img/variance.jpeg'">
+    <p>Variance plays a key role in many statistical ways. Both for descriptive statistics, statistical inference and
+      hypotheses testing.</p>
+  </div>
+</div>
+Total variance is {{variance}}
+<div *ngIf="true">
+  <div style="display: block">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [type]="'bar'">
+    </canvas>
+  </div>
+</div>

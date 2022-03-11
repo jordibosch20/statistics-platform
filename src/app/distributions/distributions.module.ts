@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DistributionsComponent } from 'src/app/distributions/distributions.component';
 
@@ -11,8 +10,7 @@ import { DistributionsComponent } from 'src/app/distributions/distributions.comp
   ],
   imports: [
     CommonModule,
-    ComponentsModule,
-    HighchartsChartModule
+    ComponentsModule
   ],
   exports: [
     DistributionsComponent
