@@ -12,15 +12,15 @@ export class AnovaComponent implements OnInit {
   public numberTreatments: number = 3;
   public formGroup = new FormGroup(
     {
-      numberTreatments: new FormControl(3)
+      provaControl: new FormControl(3)
     }
   );
 
   ngOnInit() {
-    this.formGroup.get("numberTreatments")?.valueChanges
+    this.formGroup.get("provaControl")?.valueChanges
       .pipe(
         tap(
-          () => this.numberTreatments = this.formGroup.get('numberTreatments')?.value as number
+          () => this.numberTreatments = Number(this.formGroup.get("provaControl")?.value as number)
         ),
         tap(
           () => console.log(this.numberTreatments)
@@ -29,7 +29,7 @@ export class AnovaComponent implements OnInit {
       .subscribe()
   }
 
-  public counterrrr(i: number): Array<number> {
-    return [1, 2, 3, 4];
+  public counter(i: number): Array<number> {
+    return Array.from({ length: i }, (_, j) => j + 1)
   }
 }

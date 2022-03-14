@@ -12,21 +12,18 @@
   <div class="calculator">
     <div class="parameters">
       <form [formGroup]="formGroup">
-        <label for="pet-select">Choose the number of different treatments:</label>
-        <select formControlName="numberTreatments">
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
-          <option value=6>6</option>
-          <option value=7>7</option>
-        </select>
+        <strong><label for="numberTreatments2">Choose the number of different treatments:</label></strong><br>
+        <input type="number" id="numberTreatments2" formControlName="provaControl">
+        <br>
+        <strong><label for="significance-level">Enter the significance level:</label></strong><br>
+        <input type="text" id="significance-level" value="0.05">
       </form>
     </div>
     <div class="explanation">
-      <textarea *ngFor="let numberTreatment of counterrrr(numberTreatments)">
-        {{numberTreatment}}
-      </textarea>
+      <div class="wrapper-textarea" *ngFor="let numberTreatment of counter(numberTreatments)">
+        <h4>Treatment {{numberTreatment}}</h4>
+        <textarea></textarea>
+      </div>
     </div>
   </div>
 </div>
