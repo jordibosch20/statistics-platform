@@ -4,7 +4,29 @@
     analysis tool in statistics that splits a
     variability in two parts, the systematic part and the random part. </p>
   <p>
-    Select the number of different treatment groups that you want to compare and then fill it with the values of each
-    group.
+    It is used to compare the means of three of more independent treatments and it is an extension of t-test to multiple
+    groups. The key idea is to split the variability
+    in multiple groups and figure out if the differences in the different variability is associated to the groups or
+    just the product of randomness.
   </p>
+  <div class="calculator">
+    <div class="parameters">
+      <form [formGroup]="formGroup">
+        <label for="pet-select">Choose the number of different treatments:</label>
+        <select formControlName="numberTreatments">
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+        </select>
+      </form>
+    </div>
+    <div class="explanation">
+      <textarea *ngFor="let numberTreatment of counterrrr(numberTreatments)">
+        {{numberTreatment}}
+      </textarea>
+    </div>
+  </div>
 </div>

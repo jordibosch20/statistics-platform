@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HypothesisTestingComponentsModule } from 'src/app/hypothesis-testing/components/components.module';
 import { HypothesesRoutingModule } from 'src/app/hypothesis-testing/hypothesis-testing-routing.module';
@@ -17,7 +19,10 @@ import { TestListComponent } from './pages/test-list/test-list.component';
     imports: [
         ComponentsModule,
         HypothesisTestingComponentsModule,
-        HypothesesRoutingModule
+        HypothesesRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule
     ],
     exports: [
         HypothesisTestingComponent

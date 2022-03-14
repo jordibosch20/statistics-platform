@@ -1,20 +1,15 @@
 .container {
-
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 32px;
   color: rgb(15, 15, 15);
+  padding: 4px;
 
   a {
     font-weight: bold;
   }
-
-  border: 1px solid rgb(243, 216, 210);
-  background-color: rgb(255, 245, 243);
 }
 
 .container:hover {
   cursor: pointer;
-  background-color: rgb(243, 216, 210);
+  color: #E58730;
 }

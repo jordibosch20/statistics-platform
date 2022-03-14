@@ -1,10 +1,15 @@
 <div class="title">
   <div class="wrapper-title">
-    <a [routerLink]="'/'">
-      <h2>Statistics World</h2>
-    </a>
-    <a *ngFor="let headerOption of headerOptions" [routerLink]="headerOption.url">
-      {{headerOption.name}}
-    </a>
+    <div class="logo">
+      <img src="assets/stats_title.svg" alt="Statistics Title">
+      <a [routerLink]="'/'">
+        <h2>Statistics World</h2>
+      </a>
+    </div>
+    <div class="headerOptions">
+      <a *ngFor="let headerOption of headerOptions" [routerLink]="headerOption.url">
+        {{headerOption.name}}
+      </a>
+    </div>
   </div>
 </div>
