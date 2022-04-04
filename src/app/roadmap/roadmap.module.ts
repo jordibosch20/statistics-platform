@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RoadmapRoutingModule } from './roadmap-routing.module';
 import { RoadmapComponent } from './roadmap.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { RoadmapComponent } from './roadmap.component';
   ],
   imports: [
     CommonModule,
+    ComponentsModule,
     RoadmapRoutingModule
   ]
 })
