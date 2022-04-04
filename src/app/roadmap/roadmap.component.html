@@ -1,1 +1,89 @@
-<p>roadmap works!</p>
+<header-menu></header-menu>
+<div class="container">
+    <h1>Public Open Roadmap</h1>
+    <p>Starting your own project is always tough at the beginning. Hereby I will share all the problems that I have had building it as well as a separations of tasks that
+        by weeks and problems I have faced.</p>
+            <h2>Stack used</h2>
+            <li><strong>Angular for the frontend.</strong> Angular is a JS framework that
+                helps us abstract different features (routings inside the platform, reuse components) and many more.
+                This was not explicitly needed. You could just go with plain HTML, CSS and Vanilla JS.
+                But if you happen to know a framework, you can use it and it will speed up lots of processes.
+                In my case, I wanted to use a framework to reuse components all over the platform. Both React and Vue would
+                also have been really useful. Just make sure you choose one that you are already comfortable with
+                or one that has really good documentation. <a href="https://www.reddit.com/r/webdev/comments/atgke2/react_vs_vanilla_js_when_to_use_each_of_them/">Check here</a> for more info
+            </li><br>
+            <li>
+            <strong>Python for the backend. </strong>This choice was tricky. I had almost no experience with Python. I have done all backends in NodeJS. Since
+                this platform has to deal with statistics algorithms, Python or R would simplify a lot some processes since
+                the statistics comunity is heavy reliant into both of them. <br> The fact that I ended up chosing Python over R was because lots
+                of backends are made with Python and thus, it would be way easier to set up a backend and comunicate with
+                the frontend better than using R.
+            </li><br>
+        <li>
+            <strong>Google Cloud as my cloud provider and Firebase as my database.</strong> I would like to move my stack to DynamoDB and AWS but since I have
+            work experience with the former one, I prefer to use GCloud. I would like to move at some point to move my cloud vendor to AWS since I deeply think
+            up to this moment it is way more complete and has more features. <br> Since at this point I don't care THAT much about complex features
+            and both platforms will be useful, I will go with Google Cloud since it will be faster for me.
+
+            I want to be prepared for high traffic and scalability, that's why, deciding exactly which servers/containers/structures exactly inside Google Cloud
+            will be done later.
+        </li>
+    <br>
+        <li>
+        <strong>
+        Hosting: Firebase
+        </strong>
+        </li>
+        <br>
+        <li>
+        <strong>
+            DNS provider
+        </strong>
+        </li>
+        <h2>Project considerations</h2>
+    <p>Some initial considerations regarding this project should be made</p>
+    <li>This project aims for helping people do statistics, simplifying some tedius calculations processes.</li><br>
+<li>I want this to have formality over usability. If at some point I feel like I am adding new features just
+    to have a bigger platform, I will have missed my goal. <a href="https://www.minimalismmadesimple.com/home/17-reasons-why-less-is-more/">Less is More</a>
+    I want this to be a place where somebody that wants to learn, can learn, not just lots of calculators that do
+    the computations without explanation.
+</li> <br>
+<li>
+    I want to do things fast, simple and working. If something works, it will be kept this way. No over complexities,
+    no what ifs, I want to follow the principles of Agile and keep iterating and obtaining feedback. Value will be
+    defined by the users, not by mysefl.
+</li> <br>
+<li>
+    This project will <strong>not have unit testing</strong>. I know my boss would kill me if he saw that but, I want to do it really fast,
+    as an <a href="https://www.whatisanindiemaker.com/">indie maker</a>, and it will be just myself dealing with the code. <strong>Warning:</strong>This is a must NOT do in
+software development.<br> All code should be tested, specially if you want to build robust, mantainable, shared code.<br>
+Since in this case, it will just be myself and the time to develop this platform is really limited, I have taken the permission to not follow best software practices. Lets see
+how it goes 😳.
+</li> <br>
+<h2>Weekly 1 goals</h2>
+<li>Do a competitive study on the comptence</li>
+<li>Diferentiate my project from the competence.
+    Which tools could be improved? How would I do it better?
+</li>
+<h2>Weekly 2 goals</h2>
+<li>Build Figma desing(I have really bad eye for UX). Luckily my brother does not, and he helped me with that part.</li>
+<li>Tune the color palette that I will use all over the platform</li>
+<h2>Weekly 3 goals</h2>
+<li>Decide the name of the platform</li>
+<li>Start building frontend</li>
+<li>Decide module structure, initial components needed.</li>
+<h2>Weekly 4 goals</h2>
+<li>
+    Have extremely basic mockup working (with routing working, components created and properly styled)<br>
+    <img width="50%" [src]="'assets/img/initial_mockup.png'">
+</li>
+<h2>Weekly 5 goals</h2>
+<li>Up to this point, I face the first technical challenge. I have tried to use ChartJS for client side charts. Some problems arise with this.
+    First of all, it introduces a lot of communication between the backend results of the statistics tests and the frontend library. This turns into
+    multiple parameters returned by the backend need to be parsed and then introduced into the frontend charting library.
+    Secondly, Python is way more prepared to chart statistics graphs. I could generate the output on the backend and send the results (image included). In the backend, charting the results with Python is way more immediate and provides better results
+to the user. Thats why I decided to go with this second option. We should be aware that comes with a tradeoff of more bandwidth used in client side to be able
+to receive the image from the backend<br>
+</li><br>
+<li>Set up a Python server on Google Cloud</li>
+</div>
