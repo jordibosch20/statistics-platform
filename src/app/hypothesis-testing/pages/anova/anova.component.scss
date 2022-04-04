@@ -11,13 +11,32 @@ div.container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: baseline;
-    margin: 8px;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 16px;
+    height: 60vh;
 
     div.parameters {
       flex-grow: 1;
       display: flex;
+      flex-direction: column;
       margin: 8px;
+      height: 100%;
+      box-sizing: border-box;
+      justify-content: space-between;
+
+      button.final {
+        padding: 8px;
+        border: 1px solid black;
+        font-weight: bold;
+        border-radius: 5px;
+        background-color: #FBC490;
+        cursor: pointer;
+      }
+
+      button.final:active {
+        transform: translateY(2px);
+      }
     }
 
     div.explanation {
@@ -25,18 +44,22 @@ div.container {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      margin: 16px;
+      margin: 8px;
+      height: 100%;
       flex-wrap: wrap;
 
       .wrapper-textarea {
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
         text-align: center;
-        margin: 8px;
+        margin: 0 8px;
 
         textarea {
-          height: 512px;
+          height: 100%;
           width: 100%;
           background-color: #FFFAF4;
+          min-height: 128px;
         }
 
       }

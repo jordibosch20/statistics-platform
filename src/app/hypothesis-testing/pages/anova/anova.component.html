@@ -14,10 +14,11 @@
       <form [formGroup]="formGroup">
         <strong><label for="numberTreatments2">Choose the number of different treatments:</label></strong><br>
         <input type="number" id="numberTreatments2" formControlName="provaControl">
-        <br>
+        <br><br>
         <strong><label for="significance-level">Enter the significance level:</label></strong><br>
         <input type="text" id="significance-level" value="0.05">
       </form>
+      <button class="final">Compute test</button>
     </div>
     <div class="explanation">
       <div class="wrapper-textarea" *ngFor="let numberTreatment of counter(numberTreatments)">
