@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', component: WelcomePageComponent },
   { path: 'hypothesis-testing', component: HypothesisTestingComponent },
   { path: 'descriptive-statistics', component: DescriptiveStatisticsComponent },
-  { path: 'distributions', component: DistributionsComponent }
+  { path: 'distributions', component: DistributionsComponent },
+  { path: 'roadmap', loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapModule) }
 ];
 
 @NgModule({
