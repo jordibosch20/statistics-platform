@@ -84,6 +84,16 @@ how it goes 😳.
     Secondly, Python is way more prepared to chart statistics graphs. I could generate the output on the backend and send the results (image included). In the backend, charting the results with Python is way more immediate and provides better results
 to the user. Thats why I decided to go with this second option. We should be aware that comes with a tradeoff of more bandwidth used in client side to be able
 to receive the image from the backend<br>
-</li><br>
+</li><br>,
+<li>Cloud environment preparation in order to be able to deploy servers, databases and hostings.
+    As previously mentioned I chose Firebase and Gcloud. Setting up the initial steps is not hard.
+Follow this link (for Firebase) configuration. Firebase offers a very powerful CLI that works really good and makes developer lives way easier. <br>
+The first step to do was to using  <a href="https://firebase.google.com/docs/hosting">Firebase as a hosting.</a> We want to have a mockup URL(with the .firebaseapp.com) where we can deploy our code and show
+it to other people. To do so, we need to upload all the static files that firebase need to return when the URL will be called. As I said, follow the steps in
+the guide and you will be able to deploy it.
+</li>
+<img width="50%" [src]="'assets/img/firebase_deploy.png'">
+
 <li>Set up a Python server on Google Cloud</li>
+<br>
 </div>
