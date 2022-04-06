@@ -93,6 +93,14 @@ it to other people. To do so, we need to upload all the static files that fireba
 the guide and you will be able to deploy it.
 </li><br>
 <img width="50%" [src]="'assets/img/firebase_deploy.png'">
-<li>Set up a Python server on Google Cloud</li>
+<li>Set up a Python server on Google Cloud. As a starting point I will make it work using google cloud functions(lambdas in AWS). This are perfect for
+    scalability and just using what you need and not caring much about the infraestructure. Cloud functions comes with the tradeoff of cold starts (that is,
+the function experiences a signficant relay the first time it is called in a while(5-15) minutes more or less. This is no problem if you have enough traffic,
+otherwise you end up loosing 1-1.5 seconds which are really valuable for user retention. Another option to explore(when looking at user metrics) would be to move
+it into Cloud Run (which resembles way more a traditional server) and can handle thousands of calls at the same time.</li>
+<li>To set up a cloud function in Python we have used gcloud CLI. We already deployed our frontend into the hosting using Firebase CLI, but,
+    in this case, we will need gcloud CLI, since Firebase CLI is only prepared for dealying with deployments of functions written in TS/JS.
+    Just install <a href="https://cloud.google.com/sdk/docs/install">gcloud CLI</a> and deploy them using the commands staten <a href="https://cloud.google.com/functions/docs/concepts/python-runtime">here</a>
+</li>
 <br>
 </div>
