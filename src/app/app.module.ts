@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -18,6 +19,7 @@ import { DistributionsModule } from './distributions/distributions.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ComponentsModule,
     WelcomePageModule,
     HypothesisTestingModule,
