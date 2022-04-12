@@ -102,5 +102,54 @@ it into Cloud Run (which resembles way more a traditional server) and can handle
     in this case, we will need gcloud CLI, since Firebase CLI is only prepared for dealying with deployments of functions written in TS/JS.
     Just install <a href="https://cloud.google.com/sdk/docs/install">gcloud CLI</a> and deploy them using the commands staten <a href="https://cloud.google.com/functions/docs/concepts/python-runtime">here</a>
 </li>
+<li>Choosing which Python web framework (Django or Flask)</li>
+<li>Once we know we will be using Flask, we will start trying to deploy a first Hello World function.
+    Once we have achieved that, we will call this mock function from the frontend using http client library in Angular.
+    It is important to go step by step making sure the previous one works before moving to the next one. This way, we can
+    guarantee we are building a solution that will end up working.
+</li>
 <br>
+<h2>Weekly 7 goals</h2>
+<li>This week was basically devoted to learn the basics of Flask and how to set up a backend with Python in this framework.
+    Flask is a framework that helps us build a straightforward webserver in an easy and intuitive way. The integration with it, even
+    for non-Python developers is really easy.<br><br>
+    That does not mean you won't encounter different kind of errors. It has taken me a while and some mistakes to correctly do the set up.
+    I will share here some of the mistakes I have faced. Remember to face mistakes as oportunities to learn more and not let them take down
+    your self esteem. It is part of the developers job and you will face lots of them in your career, so, better be prepared and with a
+    positive mindset.
+    <ul>
+        <li><h2>1. CORS.</h2> The most classic one. You will always have this error when setting up a web server and if you
+            don't receive it at first, either it is not the first time you set up a web server or you are in a big trouble
+        <img width="50%" [src]="'assets/img/cors.png'"><br>
+    You can read a little bit about what CORS policies are, why they are needed, and how to set them up <a href="https://web.dev/cross-origin-resource-sharing/">here</a>.
+        </li>
+        <li>
+            <h2>2. Multithreading</h2>
+            <img width="50%" [src]="'assets/img/matplotlib_thread.png'"><br>
+            Honestly, this one was way more tricky and harder to debug, since CORS is an extremely common issue and is very well documented
+            but not this one.
+
+            *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: '+[NSUndoManager(NSInternal) _endTopLevelGroupings] is only safe to invoke on the main thread.'
+
+            Basically we were executing code in multiple threads in our backend. This is due to the nature of matplotlib GUI.
+            When we are executing scripts in Jupyter for example and we want to generate a plot, this set of plot instructions are
+            executed in a different thread. <br>
+            Multithreading programming allows to speed things. If we have 2 subtasks (A and B) and each task does not need the other, we can
+            execute them in different computer processing unit and speed the process. The problem is if they share 'state', like in this case.
+            Here the 'state' is a common graph in which the two subtasks are changing things. To solve this issue, I noticed that
+            there was no need to plot the graph in the backend(Our backend will be in a Cloud in Belgium), the only thing we need
+            is to be able to 'save' the graph, not 'render' it on the backend.<br>
+            Once I changed this, I was able to correclty generate, save and send the image from the backend to the frontend.
+        </li>
+        <li>Many other little mistakes have appeared in the process, I just showed two of them as examples</li>
+    </ul>
+</li>
+<li>
+    Continuing with goals this week. I would like to parse ANOVA input and generate the correspondig graphics and results
+    in the frontend. I have been able to correclty connect and send images from both places right now so I believe it is doable
+    to have it all set for two days from now.
+</li>
+
+<li>First mistakes (CORS). We have to investigate how to set up an origin for the cors policy. CORS is a classic error you
+will have when setting and calling a new server. Read more about what is the problem and what should be the solution .
 </div>
