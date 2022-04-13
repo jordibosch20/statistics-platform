@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'anova',
@@ -18,46 +18,28 @@ export class AnovaComponent implements OnInit {
   public numberTreatments: number = 3;
   public formGroup = new FormGroup(
     {
-      provaControl: new FormControl(3)
+      numberTreatments: new FormControl(this.numberTreatments)
     }
   );
 
-  public createImageFromBlob(image: Blob) {
-    let reader = new FileReader();
-    reader.addEventListener("load", () => {
-      this.imageToShow = reader.result;
-    }, false);
-    console.log('image is', image);
-    if (image) {
-      reader.readAsDataURL(image);
-    }
-  }
-
   ngOnInit() {
-    this.formGroup.get("provaControl")?.valueChanges
+    this.formGroup.get("numberTreatments")?.valueChanges
       .pipe(
         tap(
-          () => this.numberTreatments = Number(this.formGroup.get("provaControl")?.value as number)
-        ),
-        tap(
-          () => console.log(this.numberTreatments)
+          value => this.numberTreatments = value
         )
       )
       .subscribe()
   }
 
-  public counter(i: number): Array<number> {
-    return Array.from({ length: i }, (_, j) => j + 1)
+  public counter(n: number): Array<number> {
+    return [...Array(n).keys()].map(i => i + 1);
   }
 
   public computeAnova(): any {
     return this.anovaService.getAnovaResults()
       .subscribe(
-        result => {
-          this.imageToShow = URL.createObjectURL(result);
-          this.imageToShow = this.domSanitizer.bypassSecurityTrustUrl(this.imageToShow)
-          console.log(this.imageToShow);
-        }
+        result => this.imageToShow = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result))
       )
   }
 
