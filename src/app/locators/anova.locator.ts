@@ -11,8 +11,8 @@ export class AnovaLocator {
     constructor(private httpClient: HttpClient) { }
 
     public connectToEnd(): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = `http://192.168.1.17:8080/`;
+        const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
+        //const url: string = `http://192.168.16.37:8080/`;
         return this.httpClient.get(url, {
             observe: 'response',
             responseType: 'blob'
