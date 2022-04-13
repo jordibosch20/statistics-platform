@@ -149,7 +149,28 @@ it into Cloud Run (which resembles way more a traditional server) and can handle
     in the frontend. I have been able to correclty connect and send images from both places right now so I believe it is doable
     to have it all set for two days from now.
 </li>
-
+<li>Finally could set up all servers in production working with image transfer!
+    <img width="50%" [src]="'assets/img/image_frontend_production.jpg'"><br>
+    It took way less than I have expected. As we can see the project does the
+    call from an already public DNS to the backend in Google Cloud functions.
+</li>
+<li>Next step: Generating an image that actually reads the values from the frontend
+    and generates the correspondig ANOVA for
+    <ul>
+        <li>Up to this point I faced the problem of just generating a simulated
+            image with matplotlib in the backend and being able to send it up to the front.
+            Right now we generate the correct and expected images. Some considerations should be taken.
+            First of all, I don't know beforehand how many treatment groups the user
+            will select. That complicates a little bit things, since I am not able
+            to state it when I create when the components are rendered in the frontend.
+            To handle this scenarios we will use dynamic forms (See angular documentation).
+            This dynamic forms will help us make sure all the data in the user side is validated
+            and provide the user with some mechanism in order for they to know if some
+            value is not correctly formated, or a comma is missing, just to prevent a future
+            error to happen.<br>
+        </li>
+    </ul>
+</li>
 <li>First mistakes (CORS). We have to investigate how to set up an origin for the cors policy. CORS is a classic error you
 will have when setting and calling a new server. Read more about what is the problem and what should be the solution .
 </div>
