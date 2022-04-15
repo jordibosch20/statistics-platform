@@ -9,22 +9,19 @@
     in multiple groups and figure out if the differences in the different variability is associated to the groups or
     just the product of randomness.
   </p>
-  <div class="calculator">
+  <div class="calculator" [formGroup]="formGroup">
     <div class="parameters">
-      <form [formGroup]="formGroup">
         <strong><label for="prova">Choose the number of different treatments:</label></strong><br>
         <input type="number" id="prova" formControlName="numberTreatments">
         <br><br>
         <strong><label for="significance-level">Enter the significance level:</label></strong><br>
         <input type="text" id="significance-level" value="0.05">
-      </form>
       <button class="final" (click)="computeAnova()">Compute test</button>
     </div>
-    <div class="explanation">
-      <div class="wrapper-textarea" *ngFor="let numberTreatment of
-      counter(numberTreatments)">
-        <h4>Treatment {{numberTreatment}}</h4>
-        <textarea></textarea>
+    <div class="explanation" formArrayName='textAreaFormArray'>
+      <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
+          <h4>Treatment {{i + 1}}</h4>
+          <textarea formControlName='values'></textarea>
       </div>
     </div>
   </div>
