@@ -75,7 +75,7 @@ export class AnovaComponent implements OnInit {
         textAreaForm => textAreaForm.values
       )
     console.log('anovaValues are', anovaValues);
-    return this.anovaService.connectAnova(anovaValues)
+    return this.anovaService.getAnovaValues(anovaValues)
       .subscribe(
         result => this.imageToShow = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result))
       )
