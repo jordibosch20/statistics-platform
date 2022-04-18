@@ -1,0 +1,35 @@
+<div class="container">
+    <h2-title [title]="'What is T-Testing?'" class="title"></h2-title>
+    <p> T - test is used to compare two different means from two different groups and establish if they have significant differences or not</p>
+    <p>
+      Supouse we have two diferent sets of flower sizes. We get a collection of 25 flowers of each of the two different species. We want to formulate
+      if there exists signficant differences between the sizes of both flowers or it is just product of randomnes.
+    </p>
+    <strong>Hypothesis needed:</strong>
+    <li>Both groups are independent</li>
+    <li>Both groups are normally distributed</li>
+    <li>Both groups have a similar amount of variance within each group being compared (a.k.a. homogeneity of variance)
+    </li>
+
+    <p></p>
+    <div class="calculator" [formGroup]="formGroup">
+      <div class="parameters">
+          <strong><label for="significance-level">Enter the significance level:</label></strong><br>
+          <input type="text" formControlName="significanceLevel">
+        <button class="final" (click)="computeTTest()">Compute test</button>
+      </div>
+      <div class="explanation" formArrayName='textAreaFormArray'>
+        <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
+            <h4>Treatment {{i + 1}}</h4>
+            <textarea formControlName='values'></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+        <h2-title [title]="'What is behing of the t test'"></h2-title>
+        <p>We want to compare the means of two different groups in which we compute an estimator of the mean and the standard deviation.</p>
+        <p>P Value is: <strong>{{pValue?.pvalue}}</strong></p>
+        <p *ngIf="H0Rejected">We reject null hypothesis</p>
+        <p *ngIf="!H0Rejected">We accept null hypothesis</p>
+    </div>
+  </div>

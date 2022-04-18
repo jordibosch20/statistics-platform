@@ -8,13 +8,15 @@ import { HypothesisTestingComponent } from 'src/app/hypothesis-testing/hypothesi
 import { AnovaComponent } from './pages/anova/anova.component';
 import { ChiSquaredComponent } from './pages/chi-squared/chi-squared.component';
 import { TestListComponent } from './pages/test-list/test-list.component';
+import { TTestComponent } from './pages/t-test/t-test.component';
 
 @NgModule({
     declarations: [
         HypothesisTestingComponent,
         AnovaComponent,
         ChiSquaredComponent,
-        TestListComponent
+        TestListComponent,
+        TTestComponent
     ],
     imports: [
         ComponentsModule,
