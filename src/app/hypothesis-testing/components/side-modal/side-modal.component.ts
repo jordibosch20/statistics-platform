@@ -9,6 +9,7 @@ export class SideModalComponent {
   @Input() title: string = '';
 
   public calculators: any = [
+    { name: "Student t-Test", url: '/hypothesis-testing/student-t-test' },
     { name: "Anova Calculator", url: '/hypothesis-testing/anova' },
     { name: "Kourman-Cox Calculator", url: '/hypothesis-testing/kourman-cox' },
     { name: "Student's t-test", url: '/hypothesis-testing/kourman-cox' },
