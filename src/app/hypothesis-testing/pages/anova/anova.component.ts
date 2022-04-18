@@ -22,13 +22,13 @@ export class AnovaComponent implements OnInit {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(5))
+          values: new FormControl(returnRandomNumbers(20))
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(5))
+          values: new FormControl(returnRandomNumbers(20))
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(5))
+          values: new FormControl(returnRandomNumbers(20))
         })
       ])
     }
@@ -58,7 +58,7 @@ export class AnovaComponent implements OnInit {
     this.getTextareasFormArray().controls = [];
     for (let i = 0; i < value; ++i) {
       const textarea = this.fb.group({
-        values: new FormControl(returnRandomNumbers(5))
+        values: new FormControl(returnRandomNumbers(20))
       });
       this.getTextareasFormArray().push(textarea);
     }
@@ -69,8 +69,13 @@ export class AnovaComponent implements OnInit {
   }
 
   public computeAnova(): any {
-    console.log('form is', this.formGroup.getRawValue())
-    return this.anovaService.getAnovaResults()
+    const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> }> } = this.formGroup.getRawValue();
+    const anovaValues = formValues.textAreaFormArray
+      .map(
+        textAreaForm => textAreaForm.values
+      )
+    console.log('anovaValues are', anovaValues);
+    return this.anovaService.connectAnova(anovaValues)
       .subscribe(
         result => this.imageToShow = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result))
       )
