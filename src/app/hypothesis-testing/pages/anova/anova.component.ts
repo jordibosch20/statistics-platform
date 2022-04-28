@@ -77,7 +77,7 @@ export class AnovaComponent implements OnInit {
     console.log('anovaValues are', anovaValues);
     return this.anovaService.getAnovaValues(anovaValues)
       .subscribe(
-        result => this.imageToShow = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result))
+        result => this.imageToShow = URL.createObjectURL(result)
       )
   }
 
