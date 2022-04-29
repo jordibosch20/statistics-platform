@@ -173,4 +173,37 @@ it into Cloud Run (which resembles way more a traditional server) and can handle
 </li>
 <li>First mistakes (CORS). We have to investigate how to set up an origin for the cors policy. CORS is a classic error you
 will have when setting and calling a new server. Read more about what is the problem and what should be the solution .
+
+<h2>Weekly 8 goals</h2>
+<p>Finally managed to return multiple images to the frontend using same endpoint. It has taken me a while more than expected because lots of things
+    needed to be taken into account.
+</p>
+<li>First Approach: Lets try to return multiple images using the same Http Request! It should be really easy. Reality turned out to be way more complicated.
+    There is no MIME type for returning multiple images, and thus it can not be done. Maybe there is some qkind of special tweak that allows it but after digging
+    many hours could not achieve it.
+</li>
+<li>Second Approach: Build a zip on the backend, send it using the correct MIME type to the frontend. Then unzip it on client side and display all images.
+    This can be done using standard JS library (jsZIP) but comes with 2 tradeoffs. Not all browsers this solution. It requires lot of CPU on client side.
+</li>
+
+<li>Third Approach: Call multiple times the same endpoint from the frontend with different parameters specifying which image you want to be returned
+    Although this was not my primary option, it turned out to be the easiest and quickest to apply. Once this option is selected we face another choice:
+    What should we return to the frontend? I only need the image to be rendered in an [img] HTML tag. We have two options.
+    <ul>
+    <li>
+    Return a path to the frontend. Frontend will make an API call to the service where we host our image.
+        Disadvantage: My backend should return a path to the front and upload the image to a host (easiest option would be S3 in AWS or Storage in Firebase). More work.
+        Advantage: I could put CloudFront CDN and serve the static S3 files from there. This would make it really fast worlwide and have the huge benefits of
+        caching.
+    </li>
+    <li>
+    Return directly the binary to the frontend.
+        Advantage: Really fast to implement.
+        Disadvantage: No caching. Slower.
+    As with all the decisions I have taken up to the moment, I choose the easiest way to implement, with the goal of improvimg
+    </li>
+</ul>
+</li>
+
+
 </div>
