@@ -15,7 +15,8 @@ export class AnovaComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService) { }
 
-  public imageToShow: any;
+  public imageToShow1: any;
+  public imageToShow2: any;
   public numberTreatments: number = 3;
   public formGroup = new FormGroup(
     {
@@ -77,7 +78,10 @@ export class AnovaComponent implements OnInit {
     console.log('anovaValues are', anovaValues);
     return this.anovaService.getAnovaValues(anovaValues)
       .subscribe(
-        result => this.imageToShow = URL.createObjectURL(result)
+        result => {
+          this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[0]))
+          this.imageToShow2 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[1]))
+        }
       )
   }
 
