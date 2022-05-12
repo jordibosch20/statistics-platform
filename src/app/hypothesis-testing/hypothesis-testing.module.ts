@@ -9,6 +9,7 @@ import { AnovaComponent } from './pages/anova/anova.component';
 import { ChiSquaredComponent } from './pages/chi-squared/chi-squared.component';
 import { TestListComponent } from './pages/test-list/test-list.component';
 import { TTestComponent } from './pages/t-test/t-test.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { TTestComponent } from './pages/t-test/t-test.component';
         HypothesesRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        MathjaxModule.forChild(),
         CommonModule
     ],
     exports: [

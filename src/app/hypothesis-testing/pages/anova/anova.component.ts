@@ -15,6 +15,7 @@ export class AnovaComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService) { }
 
+  public selected = false;
   public imageToShow1: any;
   public imageToShow2: any;
   public numberTreatments: number = 3;

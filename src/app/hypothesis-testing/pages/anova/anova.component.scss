@@ -2,8 +2,32 @@ div.container {
   padding: 8px;
   width: 100%;
 
+  .hypothesis {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 0.5px solid rgb(219, 146, 146);
+  }
+
   .title {
     text-align: center
+  }
+
+  div.knowMore{
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0.5px solid rgb(219, 146, 146);
+      border-radius: 2px;
+      background-color: #e4c8af;
+      cursor: pointer;
+      padding: 5px;
+    }
+    button.active{
+      background-color:#e4d8cd;
+    }
   }
 
   div.calculator {
