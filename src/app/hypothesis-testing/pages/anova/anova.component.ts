@@ -12,7 +12,6 @@ import { returnRandomNumbers } from 'src/app/utils/utils';
 })
 export class AnovaComponent implements OnInit {
 
-
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService) { }
 
   public selected = false;
@@ -24,13 +23,13 @@ export class AnovaComponent implements OnInit {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(70))
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(70))
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(70))
         })
       ])
     }
