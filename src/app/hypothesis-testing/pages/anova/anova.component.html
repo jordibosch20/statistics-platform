@@ -54,7 +54,10 @@
   <span style="display:inline-block" [mathjax]="'$S_{E}^{2} = \\frac{SSE}{N-k}$'"></span> Intravariance <br><br>
   <span style="display:inline-block" [mathjax]="'$F_{ratio} = \\frac{S_{t}^{2}}{S_{E}^{2}} \\sim	F_{k-1, N-k}$'"></span> since it is a division of two Chi-squareds divided by their corresponding degrees of freedom, we know this statistic follows the <a href="https://en.wikipedia.org/wiki/F-distribution">F-distribution</a><br><br>
   With that we have found a distribution that an statistic would have to follow if <span style="display:inline-block" [mathjax]="'$H0$'"></span> was true.
-  With that we will be able to compute <span style="display:inline-block" [mathjax]="'$p$'"></span>-values and probabilites of finding values more extreme than observed
+  With that we will be able to compute <span style="display:inline-block" [mathjax]="'$p$'"></span>-values and probabilites of finding values more extreme than observed.
+  Finding an statistic that the null hypothesis should follow is the basis for hypothesis testing.<br>
+  In our case, we will decide if we reject the null hytpohesis or not depending on what is the significance level entered by the user. By default <span style="display:inline-block" [mathjax]="'$0.05$'"></span> is the
+  standard value. In case that under the null hypothesis the probability of observing the values is less than the significance level, we will reject <span style="display:inline-block" [mathjax]="'$H0$'"></span>
 
 </div>
 
