@@ -1,0 +1,35 @@
+div.spiner{
+    border: 2px solid #db9292;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 10000;
+    top: 45%;
+    left: 45%;
+    background-color: white;
+    padding: 10px;
+
+    .loader {
+      margin:auto;
+      margin-bottom:20px;
+      margin-top:20px;
+      border: 8px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 8px solid rgb(216, 118, 5);
+      border-right:  8px solid rgb(216, 118, 5);
+      border-bottom: 8px solid rgb(216, 118, 5);
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 0.7s linear infinite;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }

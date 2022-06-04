@@ -78,5 +78,13 @@
     </div>
   </div>
 </div>
-<img [src]="imageToShow1">
-<img [src]="imageToShow2">
+<div class="firstImage">
+  <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+  <img [src]="imageToShow1">
+</div>
+<div class="secondImage">
+  <h2 *ngIf="imageToShow2">Normality test for each of the treatments</h2>
+  <img [src]="imageToShow2">
+</div>
+<popup *ngIf="isComputing">
+</popup>

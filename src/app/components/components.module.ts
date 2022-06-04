@@ -5,13 +5,15 @@ import { DescriptiveLinkComponent } from './descriptive-link/descriptive-link.co
 import { H2TitleComponent } from './h2-title/h2-title.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationTabComponent } from './navigation-tab/navigation-tab.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     H2TitleComponent,
     DescriptiveLinkComponent,
-    NavigationTabComponent
+    NavigationTabComponent,
+    PopupComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { NavigationTabComponent } from './navigation-tab/navigation-tab.componen
     HeaderComponent,
     H2TitleComponent,
     DescriptiveLinkComponent,
-    NavigationTabComponent
+    NavigationTabComponent,
+    PopupComponent
   ]
 })
 export class ComponentsModule { }

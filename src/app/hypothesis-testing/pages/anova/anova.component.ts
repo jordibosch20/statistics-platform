@@ -18,6 +18,7 @@ export class AnovaComponent implements OnInit {
   public imageToShow1: any;
   public imageToShow2: any;
   public numberTreatments: number = 3;
+  public isComputing: boolean = false;
   public formGroup = new FormGroup(
     {
       numberTreatments: new FormControl(this.numberTreatments),
@@ -70,6 +71,7 @@ export class AnovaComponent implements OnInit {
   }
 
   public computeAnova(): any {
+    this.isComputing = true;
     const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> }> } = this.formGroup.getRawValue();
     const anovaValues = formValues.textAreaFormArray
       .map(
@@ -79,6 +81,7 @@ export class AnovaComponent implements OnInit {
     return this.anovaService.getAnovaValues(anovaValues)
       .subscribe(
         result => {
+          if(!!result) this.isComputing = false;
           this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[0]))
           this.imageToShow2 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[1]))
         }
