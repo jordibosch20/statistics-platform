@@ -10,6 +10,7 @@ import { ChiSquaredComponent } from './pages/chi-squared/chi-squared.component';
 import { TestListComponent } from './pages/test-list/test-list.component';
 import { TTestComponent } from './pages/t-test/t-test.component';
 import { MathjaxModule } from 'mathjax-angular';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { MathjaxModule } from 'mathjax-angular';
         FormsModule,
         ReactiveFormsModule,
         MathjaxModule.forChild(),
+        DataTablesModule,
         CommonModule
     ],
     exports: [
