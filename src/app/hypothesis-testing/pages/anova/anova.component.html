@@ -1,4 +1,4 @@
-<div class="container">
+<div #prova class="container">
   <h2-title [title]="'What is Anova?'" class="title"></h2-title>
   <p> Anova <strong> (Analysis of variance) </strong> is the most widely
     analysis tool in statistics that splits a
@@ -78,13 +78,89 @@
     </div>
   </div>
 </div>
-<div class="firstImage">
+<div #targetScroll class="firstImage">
   <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
   <img [src]="imageToShow1">
 </div>
 <div class="secondImage">
   <h2 *ngIf="imageToShow2">Normality test for each of the treatments</h2>
   <img [src]="imageToShow2">
+  <div *ngIf="resultsAnovaNormality">
+    <h2>Normality test</h2>
+    <p>After seeing the plots we will apply Shapiro-Wilk test to our data</p>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+        <tr>
+          <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of resultsAnovaNormality[1]">
+          <td *ngFor="let cell of row">
+            {{cell}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="leveneTest" *ngIf="imageToShow1">
+  <h2>Homocedasticity Test</h2>
+  In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
+  verify this assumptions.
 </div>
 <popup *ngIf="isComputing">
 </popup>
+
+<div *ngIf="resultsHomocedasticity">
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsHomocedasticity[1]">
+        <td *ngFor="let cell of row">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="resultsAnovaComputation">
+  <h2>Anova Computation</h2>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaComputation[1]">
+        <td *ngFor="let cell of row">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="resultsAnovaTukey">
+  <h2>Tukey Pairwise Analysis</h2>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaTukey[1]">
+      <td *ngFor="let cell of row">
+        {{cell}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -17,6 +17,23 @@ export class AnovaService {
         )
         return combineLatest(mergedCalls)
     }
+
+    public getAnovaHomocedasticity(anovaValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisLocator.getAnovaHomocedasticity(anovaValues);
+    }
+
+    public getAnovaComputation(anovaValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisLocator.getAnovaComputation(anovaValues);
+    }
+
+    public getAnovaTukey(anovaValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisLocator.getAnovaTukey(anovaValues);
+    }
+
+    public getNormalityComputation(anovaValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisLocator.getNormalityComputation(anovaValues);
+    }
+
     public getTTestValues(levelSignificance: number, tTestValues: Array<Array<number>>): Observable<any> {
         return this.hypothesisLocator.getTTestValues(levelSignificance, tTestValues)
             .pipe(
