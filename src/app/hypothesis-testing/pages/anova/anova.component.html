@@ -86,7 +86,7 @@
   <h2 *ngIf="imageToShow2">Normality test for each of the treatments</h2>
   <img [src]="imageToShow2">
   <div *ngIf="resultsAnovaNormality">
-    <h2>Normality test</h2>
+    <h2>Normality test (Saphiro-Wilk)</h2>
     <p>After seeing the plots we will apply Shapiro-Wilk test to our data</p>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
