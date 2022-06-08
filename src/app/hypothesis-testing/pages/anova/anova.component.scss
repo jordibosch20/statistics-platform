@@ -44,10 +44,26 @@ div.container {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      margin: 8px;
-      height: 100%;
       box-sizing: border-box;
       justify-content: space-between;
+      margin: 8px;
+      padding-top: 8px;
+      height: 100%;
+
+      div.inputs{
+        input{
+          margin: 12px 0;
+          box-sizing: border-box;
+          width:100%
+        }
+      }
+
+      div.buttonCompute{
+        button{
+          box-sizing: border-box;
+          width:100%
+        }
+      }
 
       button.final {
         padding: 8px;
