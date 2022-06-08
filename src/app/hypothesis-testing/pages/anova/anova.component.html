@@ -11,8 +11,10 @@
     hypothesis <span style="display:inline-block" [mathjax]="'$H1$'"></span>, which states that there exists at least a pair of distinct means.
     Formally this can be staten as: <br><br>
     <div class="hypothesis">
-      <div class="inline" [mathjax]="'$H0: \\mu_{1} = \\mu_{2} = \\cdots = \\mu_{k}$'"></div>
-      <div class="inline" [mathjax]="'$H1: \\exists  j, k \\hspace{0.2cm} | \\hspace{0.2cm} \\mu_{j} \\neq \\mu_{k}$'"></div>
+      <div class="hypothesis-box">
+        <div class="inline" [mathjax]="'$H0: \\mu_{1} = \\mu_{2} = \\cdots = \\mu_{k}$'"></div>
+        <div class="inline" [mathjax]="'$H1: \\exists  j, k \\hspace{0.2cm} | \\hspace{0.2cm} \\mu_{j} \\neq \\mu_{k}$'"></div>
+      </div>
     </div>
     <br>
   <div class="knowMore">
@@ -82,31 +84,33 @@
     </div>
   </div>
 </div>
-<div #targetScroll class="firstImage">
-  <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
-  <img [src]="imageToShow1">
-</div>
-<div class="secondImage">
-  <h2 *ngIf="imageToShow2">Normality test for each of the treatments</h2>
-  <img [src]="imageToShow2">
-  <div *ngIf="resultsAnovaNormality">
-    <h2>Normality test (Saphiro-Wilk)</h2>
-    <p>After seeing the plots we will apply Shapiro-Wilk test to our data</p>
-    <table datatable [dtOptions]="dtOptions" class="row-border hover">
-      <thead>
-        <tr>
-          <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of resultsAnovaNormality[1]">
-          <td *ngFor="let cell of row">
-            {{cell}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="imageWrapper">
+  <div #targetScroll class="firstImage">
+    <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+    <img [src]="imageToShow1">
   </div>
+  <div class="secondImage">
+    <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
+    <img [src]="imageToShow2">
+  </div>
+</div>
+<div *ngIf="resultsAnovaNormality">
+  <h2>Normality test (Saphiro-Wilk)</h2>
+  <p>After seeing the plots we will apply Shapiro-Wilk test to our data</p>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaNormality[1]">
+        <td *ngFor="let cell of row">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class="leveneTest" *ngIf="imageToShow1">
   <h2>Homocedasticity Test</h2>
@@ -115,7 +119,6 @@
 </div>
 <popup *ngIf="isComputing">
 </popup>
-
 <div *ngIf="resultsHomocedasticity">
   <table datatable [dtOptions]="dtOptions" class="row-border hover">
     <thead>
@@ -132,7 +135,6 @@
     </tbody>
   </table>
 </div>
-
 <div *ngIf="resultsAnovaComputation">
   <h2>Anova Computation</h2>
   <table datatable [dtOptions]="dtOptions" class="row-border hover">
@@ -150,7 +152,6 @@
     </tbody>
   </table>
 </div>
-
 <div *ngIf="resultsAnovaTukey">
   <h2>Tukey Pairwise Analysis</h2>
   <table datatable [dtOptions]="dtOptions" class="row-border hover">

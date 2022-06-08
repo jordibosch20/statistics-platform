@@ -3,11 +3,20 @@ div.container {
   width: 100%;
 
   .hypothesis {
+
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 12px;
-    border: 0.5px solid rgb(219, 146, 146);
+
+
+    .hypothesis-box{
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+      border: 2px solid #e13a3a;
+      padding: 12px 60px;
+      gap: 12px;
+    }
   }
 
   .title {
@@ -38,7 +47,7 @@ div.container {
     align-items: flex-start;
     box-sizing: border-box;
     margin: 16px;
-    height: 60vh;
+    height: 50vh;
 
     div.parameters {
       flex-grow: 1;
@@ -107,11 +116,20 @@ div.container {
   }
 
 }
-div.firstImage{
+div.imageWrapper{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+div.firstImage{
+  text-align: center;
+  border: 0.05px solid rgb(226, 213, 213);
+  box-sizing: box-sizing;
 }
 
 div.secondImage{
-
+  text-align: center;
+  border: 0.05px solid rgb(226, 213, 213);
+  box-sizing: box-sizing;
 }
-
