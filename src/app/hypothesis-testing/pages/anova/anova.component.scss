@@ -110,26 +110,32 @@ div.container {
           background-color: #FFFAF4;
           min-height: 128px;
         }
-
       }
     }
   }
-
 }
+
+td.green{
+  color: rgb(34, 199, 34);
+}
+
+td.red{
+  color: red;
+}
+
 div.imageWrapper{
   display:flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap:wrap;
 }
 
 div.firstImage{
   text-align: center;
-  border: 0.05px solid rgb(226, 213, 213);
   box-sizing: box-sizing;
 }
 
 div.secondImage{
   text-align: center;
-  border: 0.05px solid rgb(226, 213, 213);
   box-sizing: box-sizing;
 }

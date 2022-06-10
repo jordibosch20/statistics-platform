@@ -83,13 +83,23 @@ export class AnovaComponent implements OnInit {
     return [...Array(n).keys()].map(i => i + 1);
   }
 
+  private transformIntoArray(value: string | Array<number>): Array<number>{
+    if(typeof(value) === 'string'){
+      return value.split(',').map(x => Number(x))
+    }
+    return value;
+  }
+
   public computeAnova(): any {
     this.isComputing = true;
-    const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> }> } = this.formGroup.getRawValue();
+    const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> | string }> } = this.formGroup.getRawValue();
     const anovaValues = formValues.textAreaFormArray
       .map(
         textAreaForm => textAreaForm.values
       )
+      .map(
+        anovaValues => this.transformIntoArray(anovaValues)
+      );
     console.log('anovaValues are', anovaValues);
     return combineLatest([
         this.anovaService.getAnovaValues(anovaValues),

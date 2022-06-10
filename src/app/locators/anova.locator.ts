@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AnovaPayloadType } from 'src/app/entities/imagesPayload';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class HypothesisLocator {
 
     public getAnovaValues(anovaValues: Array<Array<number>>, payload: AnovaPayloadType): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/anova`;
+        const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         })
@@ -37,7 +38,7 @@ export class HypothesisLocator {
 
     public getAnovaHomocedasticity(anovaValues: Array<Array<number>>): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/anova`;
+        const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         });
@@ -60,7 +61,7 @@ export class HypothesisLocator {
 
     public getAnovaComputation(anovaValues: Array<Array<number>>): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/anova`;
+        const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         });
@@ -83,7 +84,7 @@ export class HypothesisLocator {
 
     public getAnovaTukey(anovaValues: Array<Array<number>>): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/anova`;
+        const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         });
@@ -106,7 +107,7 @@ export class HypothesisLocator {
 
     public getNormalityComputation(anovaValues: Array<Array<number>>): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/anova`;
+        const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         });
@@ -129,7 +130,7 @@ export class HypothesisLocator {
 
     public getTTestValues(levelSignificance: number, tTestValues: Array<Array<number>>): Observable<string> {
         // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` http://127.0.0.1:8000/ttest`;
+        const url: string = ` https://statistics-iv4frwev3a-ew.a.run.app/ttest`;
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         })
