@@ -2,44 +2,35 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { AnovaPayloadType } from 'src/app/entities/imagesPayload';
-import { HypothesisLocator } from 'src/app/locators/anova.locator';
+import { AnovaLocator } from 'src/app/locators/anova.locator';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AnovaService {
 
-    constructor(private hypothesisLocator: HypothesisLocator) { }
+    constructor(private anovaLocator: AnovaLocator) { }
 
     public getAnovaValues(anovaValues: Array<Array<number>>): Observable<Array<any>> {
         const mergedCalls: Array<Observable<any>> = Object.values(AnovaPayloadType).map(
-            payload => this.hypothesisLocator.getAnovaValues(anovaValues, payload as AnovaPayloadType)
+            payload => this.anovaLocator.getAnovaValues(anovaValues, payload as AnovaPayloadType)
         )
         return combineLatest(mergedCalls)
     }
 
     public getAnovaHomocedasticity(anovaValues: Array<Array<number>>): Observable<any> {
-        return this.hypothesisLocator.getAnovaHomocedasticity(anovaValues);
+        return this.anovaLocator.getAnovaHomocedasticity(anovaValues);
     }
 
     public getAnovaComputation(anovaValues: Array<Array<number>>): Observable<any> {
-        return this.hypothesisLocator.getAnovaComputation(anovaValues);
+        return this.anovaLocator.getAnovaComputation(anovaValues);
     }
 
     public getAnovaTukey(anovaValues: Array<Array<number>>): Observable<any> {
-        return this.hypothesisLocator.getAnovaTukey(anovaValues);
+        return this.anovaLocator.getAnovaTukey(anovaValues);
     }
 
     public getNormalityComputation(anovaValues: Array<Array<number>>): Observable<any> {
-        return this.hypothesisLocator.getNormalityComputation(anovaValues);
-    }
-
-    public getTTestValues(levelSignificance: number, tTestValues: Array<Array<number>>): Observable<any> {
-        return this.hypothesisLocator.getTTestValues(levelSignificance, tTestValues)
-            .pipe(
-                tap(
-                    res => console.log('service result is', res)
-                )
-            );
+        return this.anovaLocator.getNormalityComputation(anovaValues);
     }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { tap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
+import { TTestService } from 'src/app/hypothesis-testing/service/ttest.service';
 import { returnRandomNumbers } from 'src/app/utils/utils';
 
 @Component({
@@ -12,11 +14,12 @@ import { returnRandomNumbers } from 'src/app/utils/utils';
 })
 export class TTestComponent {
 
-  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService) { }
+  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private tTestService: TTestService) { }
 
   public imageToShow: any;
   public pValue: any;
   public H0Rejected: boolean = false;
+  public isComputing: boolean = false;
   public formGroup = new FormGroup(
     {
       significanceLevel: new FormControl(0.05),
@@ -43,21 +46,37 @@ export class TTestComponent {
     return [...Array(n).keys()].map(i => i + 1);
   }
 
+  private transformIntoArray(value: string | Array<number>): Array<number>{
+    if(typeof(value) === 'string'){
+      return value.split(',').map(x => Number(x))
+    }
+    return value;
+  }
+
   public computeTTest(): any {
-    const formValues: { levelSignificance: number, textAreaFormArray: Array<{ values: Array<number> }> } = this.formGroup.getRawValue();
-    const tTestValues = formValues.textAreaFormArray
+    this.isComputing = true;
+    const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> | string }> } = this.formGroup.getRawValue();
+    const anovaValues = formValues.textAreaFormArray
       .map(
         textAreaForm => textAreaForm.values
       )
-    const levelSignificance = formValues.levelSignificance
-    console.log('tTestValues are', tTestValues);
-    return this.anovaService.getTTestValues(levelSignificance, tTestValues)
-      .subscribe(
-        result => {
-          this.pValue = result
-          this.H0Rejected = (this.pValue < this.formGroup.get('significanceLevel')?.value)
-        }
+      .map(
+        anovaValues => this.transformIntoArray(anovaValues)
+      );
+    console.log('anovaValues are', anovaValues);
+    return combineLatest([
+        this.tTestService.getTTestValues(0.5, anovaValues)
+      ])
+      .pipe(
+        map(
+        ([result]) => {
+          if(!!result) {
+            console.log('result is', result)
+            this.isComputing = false;
+          }
+      })
       )
+      .subscribe()
   }
 
 }

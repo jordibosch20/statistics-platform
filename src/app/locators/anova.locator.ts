@@ -8,12 +8,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class HypothesisLocator {
+export class AnovaLocator {
 
     constructor(private httpClient: HttpClient) { }
 
     public getAnovaValues(anovaValues: Array<Array<number>>, payload: AnovaPayloadType): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
         const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -37,7 +36,6 @@ export class HypothesisLocator {
     }
 
     public getAnovaHomocedasticity(anovaValues: Array<Array<number>>): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
         const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -60,7 +58,6 @@ export class HypothesisLocator {
     }
 
     public getAnovaComputation(anovaValues: Array<Array<number>>): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
         const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -83,7 +80,6 @@ export class HypothesisLocator {
     }
 
     public getAnovaTukey(anovaValues: Array<Array<number>>): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
         const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -106,7 +102,6 @@ export class HypothesisLocator {
     }
 
     public getNormalityComputation(anovaValues: Array<Array<number>>): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
         const url: string = environment.host + '/anova';
         const headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -128,30 +123,5 @@ export class HypothesisLocator {
             );
     }
 
-    public getTTestValues(levelSignificance: number, tTestValues: Array<Array<number>>): Observable<string> {
-        // const url: string = `https://europe-west1-statistics-test-74f2e.cloudfunctions.net/hello_http`;
-        const url: string = ` https://statistics-iv4frwev3a-ew.a.run.app/ttest`;
-        const headers: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
-        return this.httpClient.post(url, JSON.stringify({
-            'levelSignificance': levelSignificance, 'tTestValues': tTestValues
-        }), {
-            observe: 'response',
-            responseType: 'json',
-            headers: headers
-        })
-            .pipe(
-                map(
-                    (event: any) => event.body
-                ),
-                catchError(
-                    err => {
-                        console.log('err', err)
-                        return of(err)
-                    }
-                )
-            );
-    }
 
 }
