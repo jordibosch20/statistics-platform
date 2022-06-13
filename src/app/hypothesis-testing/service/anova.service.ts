@@ -11,13 +11,6 @@ export class AnovaService {
 
     constructor(private anovaLocator: AnovaLocator) { }
 
-    public getAnovaValues(anovaValues: Array<Array<number>>): Observable<Array<any>> {
-        const mergedCalls: Array<Observable<any>> = Object.values(AnovaPayloadType).map(
-            payload => this.anovaLocator.getAnovaValues(anovaValues, payload as AnovaPayloadType)
-        )
-        return combineLatest(mergedCalls)
-    }
-
     public getAnovaHomocedasticity(anovaValues: Array<Array<number>>): Observable<any> {
         return this.anovaLocator.getAnovaHomocedasticity(anovaValues);
     }

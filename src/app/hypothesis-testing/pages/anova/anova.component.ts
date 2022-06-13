@@ -5,6 +5,7 @@ import { combineLatest } from 'rxjs';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { returnRandomNumbers } from 'src/app/utils/utils';
+import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
 
 @Component({
   selector: 'anova',
@@ -15,7 +16,7 @@ export class AnovaComponent implements OnInit {
 
   @ViewChild('targetScroll', { static: false }) private scrollElement!: ElementRef;
 
-  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService) { }
+  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
 
   public selected = false;
   public imageToShow1: any;
@@ -102,7 +103,7 @@ export class AnovaComponent implements OnInit {
       );
     console.log('anovaValues are', anovaValues);
     return combineLatest([
-        this.anovaService.getAnovaValues(anovaValues),
+        this.hypothesisTestingService.getHypothesisCharts(anovaValues),
         this.anovaService.getAnovaHomocedasticity(anovaValues),
         this.anovaService.getAnovaComputation(anovaValues),
         this.anovaService.getAnovaTukey(anovaValues),

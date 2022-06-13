@@ -33,3 +33,15 @@
         <p *ngIf="!H0Rejected">We accept null hypothesis</p>
     </div>
   </div>
+  <div class="imageWrapper">
+    <div #targetScroll class="firstImage">
+      <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+      <img [src]="imageToShow1">
+    </div>
+    <div class="secondImage">
+      <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
+      <img [src]="imageToShow2">
+    </div>
+  </div>
+  <popup *ngIf="isComputing">
+  </popup>
