@@ -1,0 +1,132 @@
+<div #prova class="container">
+  <h2-title [title]="'What is Kolmogorov Smirnov?'" class="title"></h2-title>
+  <p> Kolmogorov Smirnov is a widely used test in statistics that tells us if two populations come from the same population or not. </p>
+  <p>
+Our null hypothesis will be the two sets of samples come from the same (unknown) distribution. We will try to establish an statistic and set some p-values. In order to do that we will
+compute the empirical distributions function for the two samples. <br><br>Our statistic will be:
+<span style="display:inline-block" [mathjax]="'$D_{n, m} = \\sup_{x} |(F_{1, n}(x) - F_{2, m}(x))|$'"></span>. The null hypothesis is rejected at level <span style="display:inline-block" [mathjax]="'$\\alpha$'"></span> if
+<span style="display:inline-block" [mathjax]="'$D_{n, m} > c(\\alpha)\\sqrt{\\frac{n + m}{n*m}}$'"></span> being <span style="display:inline-block" [mathjax]="'$c(\\alpha)$'"></span> an already precomputed table and
+<span style="display:inline-block" [mathjax]="'$\n$'"></span> and <span style="display:inline-block" [mathjax]="'$\m$'"></span> de number of observations in each sample.
+  </p>
+    We want to test the null hypothesis <span style="display:inline-block" [mathjax]="'$H0$'"></span>: which states that there is no differences between the mean of the different groups, with respect to the alternative
+    hypothesis <span style="display:inline-block" [mathjax]="'$H1$'"></span>, which states that there exists at least a pair of distinct means.
+    Formally this can be staten as: <br><br>
+    <div class="hypothesis">
+      <div class="hypothesis-box">
+        <div class="inline" [mathjax]="'$H0: D_{1} = D_{2}$'"></div>
+        <div class="inline" [mathjax]="'$H1: D_{1} \\hspace{0.2cm} \\neq D_{2}$'"></div>
+      </div>
+    </div>
+    <br>
+  <div *ngIf="selected">
+  </div>
+
+  <div class="calculator" [formGroup]="formGroup">
+    <div class="parameters">
+      <div class="inputs">
+        <strong><label for="significance-level">Enter the significance level:</label></strong><br>
+        <input type="text" id="significance-level" value="0.05">
+      </div>
+      <div class="buttonCompute">
+        <button class="final" (click)="computeAnova()">Compute test</button>
+      </div>
+    </div>
+    <div class="explanation" formArrayName='textAreaFormArray'>
+      <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
+          <h4>Treatment {{i + 1}}</h4>
+          <textarea formControlName='values'></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="imageWrapper">
+  <div #targetScroll class="firstImage">
+    <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+    <img [src]="imageToShow1">
+  </div>
+  <div class="secondImage">
+    <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
+    <img [src]="imageToShow2">
+  </div>
+</div>
+<div *ngIf="resultsAnovaNormality">
+  <h2>Normality test (Saphiro-Wilk)</h2>
+  <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
+    If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
+    we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
+  </p>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaNormality[1]">
+        <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="leveneTest" *ngIf="imageToShow1">
+  <h2>Homocedasticity Test</h2>
+  In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
+  verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
+  <div *ngIf="resultsHomocedasticity">
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+        <tr>
+          <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of resultsHomocedasticity[1]">
+          <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+            {{cell}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<popup *ngIf="isComputing">
+</popup>
+<div *ngIf="resultsAnovaComputation">
+  <h2>Anova Computation</h2>
+  <p>Finally when all assumptions have been verified we can apply ANOVA. As staten before, if some of the assumptions are not true, ANOVA can give results that are not accurate.
+    Check the explanation of the ANOVA (hypothesis needed) on the top of this page to check what are the problems in this cases.
+  </p>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaComputation[1]">
+        <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="resultsAnovaTukey">
+  <h2>Tukey Pairwise Analysis</h2>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultsAnovaTukey[1]">
+      <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+        {{cell}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

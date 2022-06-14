@@ -11,7 +11,7 @@ export class SideModalComponent {
   public calculators: any = [
     { name: "Student t-Test", url: '/hypothesis-testing/student-t-test' },
     { name: "Anova Calculator", url: '/hypothesis-testing/anova' },
-    { name: "Kourman-Cox Calculator", url: '/hypothesis-testing/kourman-cox' },
+    { name: "Kolmogorov-Smirnov Calculator", url: '/hypothesis-testing/kolmogorov-smirnov' },
     { name: "Student's t-test", url: '/hypothesis-testing/kourman-cox' },
     { name: "Paired Student's t-test", url: '/hypothesis-testing/kourman-cox' },
     { name: "Kruskal-Wallis H Test", url: '/hypothesis-testing/kourman-cox' },

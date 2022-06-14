@@ -21,8 +21,6 @@ export class TTestComponent {
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private tTestService: TTestService, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
 
   public imageToShow: any;
-  public pValue: any;
-  public H0Rejected: boolean = false;
   public isComputing: boolean = false;
   public imageToShow1: any;
   public imageToShow2: any;
@@ -42,6 +40,8 @@ export class TTestComponent {
       ])
     }
   );
+
+  dtOptions: DataTables.Settings = {};
 
   public getTextareasFormArray(): FormArray {
     return this.formGroup.get('textAreaFormArray') as FormArray
@@ -77,13 +77,11 @@ export class TTestComponent {
         this.hypothesisTestingService.getHypothesisCharts(tTestValues),
         this.tTestService.getTTestValues(0.5, tTestValues),
         this.anovaService.getAnovaHomocedasticity(tTestValues),
-        this.anovaService.getAnovaComputation(tTestValues),
-        this.anovaService.getAnovaTukey(tTestValues),
         this.anovaService.getNormalityComputation(tTestValues),
       ])
       .pipe(
         map(
-        ([res, result, homocedasticity, tTestComputation, normalityComputation]) => {
+        ([res, tTestComputation, homocedasticity, normalityComputation]) => {
           if(!!res) {
             this.isComputing = false;
             this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res[0]))

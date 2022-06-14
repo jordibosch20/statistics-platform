@@ -11,6 +11,7 @@ import { TestListComponent } from './pages/test-list/test-list.component';
 import { TTestComponent } from './pages/t-test/t-test.component';
 import { MathjaxModule } from 'mathjax-angular';
 import { DataTablesModule } from 'angular-datatables';
+import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-smirnov/kolmogorov-smirnov.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { DataTablesModule } from 'angular-datatables';
         AnovaComponent,
         ChiSquaredComponent,
         TestListComponent,
-        TTestComponent
+        TTestComponent,
+        KolmogorovSmirnov
     ],
     imports: [
         ComponentsModule,

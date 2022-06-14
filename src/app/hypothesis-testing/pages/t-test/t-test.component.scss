@@ -25,6 +25,21 @@ div.container {
         box-sizing: border-box;
         justify-content: space-between;
 
+        div.inputs{
+          input{
+            margin: 12px 0;
+            box-sizing: border-box;
+            width:100%
+          }
+        }
+
+        div.buttonCompute{
+          button{
+            box-sizing: border-box;
+            width:100%
+          }
+        }
+
         button.final {
           padding: 8px;
           border: 1px solid black;
@@ -66,4 +81,29 @@ div.container {
       }
     }
 
+  }
+
+  div.imageWrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap:wrap;
+  }
+
+  div.firstImage{
+    text-align: center;
+    box-sizing: box-sizing;
+  }
+
+  div.secondImage{
+    text-align: center;
+    box-sizing: box-sizing;
+  }
+
+  td.green{
+    color: rgb(34, 199, 34);
+  }
+
+  td.red{
+    color: red;
   }
