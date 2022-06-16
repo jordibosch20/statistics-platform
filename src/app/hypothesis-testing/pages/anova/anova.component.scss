@@ -2,12 +2,51 @@ div.container {
   padding: 8px;
   width: 100%;
 
+  div.title{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  div.knowMore{
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0.5px solid rgb(219, 146, 146);
+      border-radius: 2px;
+      background-color: #e4c8af;
+      cursor: pointer;
+      padding: 5px;
+      margin:15px;
+    }
+    button.active{
+      background-color:#e4d8cd;
+    }
+  }
+
+  div.closePopup{
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0.5px solid rgb(219, 146, 146);
+      border-radius: 2px;
+      background-color: #e4c8af;
+      cursor: pointer;
+      padding: 15px;
+      margin:15px;
+    }
+    button.active{
+      background-color:#e4d8cd;
+    }
+  }
+
   .hypothesis {
 
     display: flex;
     align-items: center;
     flex-direction: column;
-
 
     .hypothesis-box{
       display:flex;
@@ -21,22 +60,6 @@ div.container {
 
   .title {
     text-align: center
-  }
-
-  div.knowMore{
-    button{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 0.5px solid rgb(219, 146, 146);
-      border-radius: 2px;
-      background-color: #e4c8af;
-      cursor: pointer;
-      padding: 5px;
-    }
-    button.active{
-      background-color:#e4d8cd;
-    }
   }
 
   div.calculator {
@@ -113,29 +136,43 @@ div.container {
       }
     }
   }
-}
 
-td.green{
-  color: rgb(34, 199, 34);
-}
+  td.green{
+    color: rgb(34, 199, 34);
+  }
 
-td.red{
-  color: red;
-}
+  td.red{
+    color: red;
+  }
 
-div.imageWrapper{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap:wrap;
-}
+  div.imageWrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap:wrap;
+  }
 
-div.firstImage{
-  text-align: center;
-  box-sizing: box-sizing;
-}
+  div.firstImage{
+    text-align: center;
+    box-sizing: box-sizing;
+  }
 
-div.secondImage{
-  text-align: center;
-  box-sizing: box-sizing;
+  div.secondImage{
+    text-align: center;
+    box-sizing: box-sizing;
+  }
+
+  div.pdfWrapper{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    z-index: 10000;
+    position:absolute;
+    top: 55px;
+    width: 100%;
+
+    button{
+      height: 18px;
+    }
+  }
 }

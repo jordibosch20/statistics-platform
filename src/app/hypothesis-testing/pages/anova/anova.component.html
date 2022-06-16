@@ -1,5 +1,14 @@
 <div #prova class="container">
-  <h2-title [title]="'What is Anova?'" class="title"></h2-title>
+  <div class="title">
+    <h2-title [title]="'What is Anova?'" class="title"></h2-title>
+      <div class="knowMore">
+        <button (click)="selected = !selected" [class.active]="selected === true">
+          <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
+          View Full Explanation
+        </button>
+      </div>
+  </div>
   <p> Anova <strong> (Analysis of variance) </strong> is the most widely
     analysis tool in statistics that splits a
     variability in two parts, the systematic part and the random part. </p>
@@ -17,51 +26,6 @@
       </div>
     </div>
     <br>
-  <div class="knowMore">
-    <button (click)="selected = !selected" [class.active]="selected === true">
-      <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
-      <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
-      Explanation
-    </button>
-  </div>
-  <div *ngIf="selected">
-    <p>
-  The key idea is to study the variability both inside the groups and within groups.
-  In multiple groups and figure out if the differences in the different variability is associated to the groups or
-  just the product of randomness.
-    </p>
-    We will define various concepts: <br><br>
-    <span style="display:inline-block" [mathjax]="'$\\textbf{SST}$'"></span>: (Sum of squares due to treatment): Measures the variability in the data corresponding to the effect of the factor over the mean.
-    We can calculate it with: <br><br>
-    <div class="bold" style="display:inline-block" [mathjax]="'$\\textbf{SST} = \\sum\\limits_{i \\in Groups}(\\bar{x_{i}}-\\bar{x})^{2}$'"></div>
-      with <span style="display:inline-block" [mathjax]="'$\\bar{x_{i}} = \\frac{\\sum\\limits_{i \\in Group(i)}x_{i}}{n}$'"></span><br>
-    Notice that this computation, under the null hypothesis follows a Chi-squared and has <span style="display:inline-block" [mathjax]="'$k-1 $'"></span> degrees of freedom.<br><br>
-    <span style="display:inline-block" [mathjax]="'$\\textbf{SSE}$'"></span>: (Sum of residual squares of errors) = Measures the variability inside each level of treament. That is, the variability that is not effect of the factor of the
-    treatment. It is calculated with the sum of squares of the differences with respect to the level to which belongs.<br><br>
-    <div style="display:block" [mathjax]="'$\\textbf{SSE} = \\sum\\limits_{i \\in Groups}\\sum\\limits_{j \\in Group(i)}(x_{j}-\\bar{x_{i}})^{2}$'"></div><br>
-    Notice that this computation, under the null hypothesis follows a Chi-squared and has <span style="display:inline-block" [mathjax]="'$N - k$'"></span> degrees of freedom. <br><br>
-  <strong>Hypothesis needed:</strong><br><br>
-  <li>All groups are independent: Observations should be independent on from another. Different groups should not share population and should be
-    independent between them</li><br>
-  <li>All groups are normally distributed. This restriction gets less strict when the groups are big. Best way to check is to study the residuals of each observation with
-    respect to the mean of its group. ANOVA is quite robust even when the normality is not strict.
-  </li><br>
-  <li>All groups have a similar amount of variance within each group being compared (homocedasticity). This should be like this because it is assumed in the
-    the null hypothesis that all data comes from the same population.<br>
-    This condition is more important the smaller the groups are. ANOVA is quite robust to lack of homocedasticity if the number of samples per treatment is similar. If
-    not, we should go with an heterocedastic ANOVA (using Welch correction).
-  </li><br>
-  We will define some statistics to perform our hypothesis test: <br><br>
-  <span style="display:inline-block" [mathjax]="'$S_{t}^{2} = \\frac{SST}{k-1}$'"></span> Intervariance <br><br>
-  <span style="display:inline-block" [mathjax]="'$S_{E}^{2} = \\frac{SSE}{N-k}$'"></span> Intravariance <br><br>
-  <span style="display:inline-block" [mathjax]="'$F_{ratio} = \\frac{S_{t}^{2}}{S_{E}^{2}} \\sim	F_{k-1, N-k}$'"></span> since it is a division of two Chi-squareds divided by their corresponding degrees of freedom, we know this statistic follows the <a href="https://en.wikipedia.org/wiki/F-distribution">F-distribution</a><br><br>
-  With that we have found a distribution that an statistic would have to follow if <span style="display:inline-block" [mathjax]="'$H0$'"></span> was true.
-  With that we will be able to compute <span style="display:inline-block" [mathjax]="'$p$'"></span>-values and probabilites of finding values more extreme than observed.
-  Finding an statistic that the null hypothesis should follow is the basis for hypothesis testing.<br>
-  In our case, we will decide if we reject the null hytpohesis or not depending on what is the significance level entered by the user. By default <span style="display:inline-block" [mathjax]="'$0.05$'"></span> is the
-  standard value. In case that under the null hypothesis the probability of observing the values is less than the significance level, we will reject <span style="display:inline-block" [mathjax]="'$H0$'"></span>
-
-</div>
 
   <div class="calculator" [formGroup]="formGroup">
     <div class="parameters">
@@ -83,51 +47,30 @@
       </div>
     </div>
   </div>
-</div>
-<div class="imageWrapper">
-  <div #targetScroll class="firstImage">
-    <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
-    <img [src]="imageToShow1">
+  <div class="imageWrapper">
+    <div #targetScroll class="firstImage">
+      <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+      <img [src]="imageToShow1">
+    </div>
+    <div class="secondImage">
+      <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
+      <img [src]="imageToShow2">
+    </div>
   </div>
-  <div class="secondImage">
-    <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
-    <img [src]="imageToShow2">
-  </div>
-</div>
-<div *ngIf="resultsAnovaNormality">
-  <h2>Normality test (Saphiro-Wilk)</h2>
-  <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
-    If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
-    we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
-  </p>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaNormality[1]">
-        <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-          {{cell}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="leveneTest" *ngIf="imageToShow1">
-  <h2>Homocedasticity Test</h2>
-  In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
-  verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
-  <div *ngIf="resultsHomocedasticity">
+  <div *ngIf="resultsAnovaNormality">
+    <h2>Normality test (Saphiro-Wilk)</h2>
+    <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
+      If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
+      we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
+    </p>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <tr>
-          <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
+          <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of resultsHomocedasticity[1]">
+        <tr *ngFor="let row of resultsAnovaNormality[1]">
           <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
             {{cell}}
           </td>
@@ -135,43 +78,75 @@
       </tbody>
     </table>
   </div>
-</div>
-<popup *ngIf="isComputing">
-</popup>
-<div *ngIf="resultsAnovaComputation">
-  <h2>Anova Computation</h2>
-  <p>Finally when all assumptions have been verified we can apply ANOVA. As staten before, if some of the assumptions are not true, ANOVA can give results that are not accurate.
-    Check the explanation of the ANOVA (hypothesis needed) on the top of this page to check what are the problems in this cases.
-  </p>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaComputation[1]">
+  <div class="leveneTest" *ngIf="imageToShow1">
+    <h2>Homocedasticity Test</h2>
+    In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
+    verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
+    <div *ngIf="resultsHomocedasticity">
+      <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of resultsHomocedasticity[1]">
+            <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+              {{cell}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <popup *ngIf="isComputing">
+  </popup>
+  <div *ngIf="resultsAnovaComputation">
+    <h2>Anova Computation</h2>
+    <p>Finally when all assumptions have been verified we can apply ANOVA. As staten before, if some of the assumptions are not true, ANOVA can give results that are not accurate.
+      Check the explanation of the ANOVA (hypothesis needed) on the top of this page to check what are the problems in this cases.
+    </p>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+        <tr>
+          <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of resultsAnovaComputation[1]">
+          <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
+            {{cell}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="resultsAnovaTukey">
+    <h2>Tukey Pairwise Analysis</h2>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+        <tr>
+          <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of resultsAnovaTukey[1]">
         <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
           {{cell}}
         </td>
       </tr>
     </tbody>
   </table>
-</div>
-<div *ngIf="resultsAnovaTukey">
-  <h2>Tukey Pairwise Analysis</h2>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaTukey[1]">
-      <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-        {{cell}}
-      </td>
-    </tr>
-  </tbody>
-</table>
+  </div>
+  <div class="pdfWrapper" *ngIf="selected">
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="true" [fit-to-page]="false" style="width: 60%; height: 100vh"
+    [show-borders]="true" [render-text-mode]="1">
+    </pdf-viewer>
+    <div class="closePopup">
+      <button (click)="closePopup()">
+        <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+        Close Explanation
+      </button>
+    </div>
+  </div>
 </div>

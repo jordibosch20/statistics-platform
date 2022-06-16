@@ -44,6 +44,8 @@ export class AnovaComponent implements OnInit {
     }
   );
 
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/TFM.pdf?alt=media&token=91537811-0a2a-47db-9cab-2ecefefd96ea";
+
   dtOptions: DataTables.Settings = {};
 
   public getTextareasFormArray(): FormArray {
@@ -133,5 +135,9 @@ export class AnovaComponent implements OnInit {
       })
       )
       .subscribe()
+  }
+
+  public closePopup():void{
+    this.selected = !this.selected;
   }
 }

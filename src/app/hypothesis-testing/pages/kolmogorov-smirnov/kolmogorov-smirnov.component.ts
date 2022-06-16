@@ -91,41 +91,25 @@ export class KolmogorovSmirnov implements OnInit {
   public computeAnova(): any {
     this.isComputing = true;
     const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> | string }> } = this.formGroup.getRawValue();
-    const anovaValues = formValues.textAreaFormArray
+    const kolmogorovSmirnovValues = formValues.textAreaFormArray
       .map(
         textAreaForm => textAreaForm.values
       )
       .map(
-        anovaValues => this.transformIntoArray(anovaValues)
+        kolmogorovSmirnovValues => this.transformIntoArray(kolmogorovSmirnovValues)
       );
-    console.log('anovaValues are', anovaValues);
+    console.log('kolmogorovSmirnovValues are', kolmogorovSmirnovValues);
     return combineLatest([
-        this.hypothesisTestingService.getHypothesisCharts(anovaValues),
-        this.anovaService.getAnovaHomocedasticity(anovaValues),
-        this.anovaService.getAnovaComputation(anovaValues),
-        this.anovaService.getAnovaTukey(anovaValues),
-        this.anovaService.getNormalityComputation(anovaValues),
+        this.hypothesisTestingService.getKolmogorovSmirnovValues(kolmogorovSmirnovValues)
       ])
       .pipe(
         map(
-        ([result, homocedasticity, anovaComputation, anovaTukey, normalityComputation]) => {
+        ([result]) => {
           if(!!result) {
             this.isComputing = false;
             this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[0]))
             this.imageToShow2 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[1]))
             setTimeout(() =>  this.scrollElement.nativeElement.scrollIntoView({block:'start', inline: 'nearest', behavior: 'smooth'}), 70);
-          }
-          if(!!homocedasticity) {
-            this.resultsHomocedasticity = homocedasticity
-          }
-          if(!!anovaComputation) {
-            this.resultsAnovaComputation = anovaComputation
-          }
-          if(!!anovaTukey) {
-            this.resultsAnovaTukey = anovaTukey
-          }
-          if(!!normalityComputation) {
-            this.resultsAnovaNormality = normalityComputation
           }
       })
       )

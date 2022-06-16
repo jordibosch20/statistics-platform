@@ -35,5 +35,29 @@ export class HypothesisTestingLocator {
             );
     }
 
+    public getKolmogorovSmirnovValues(kolmogorovSmirnovValues: Array<Array<number>>): Observable<any> {
+        const url: string = environment.host + '/kolmogorov-smirnov';
+        const headers: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+        return this.httpClient.post(url, JSON.stringify({
+            'kolmogorovSmirnovValues': kolmogorovSmirnovValues
+        }), {
+            headers: headers,
+            observe: 'response'
+        })
+            .pipe(
+                map(
+                    (event: any) => event.body
+                ),
+                catchError(
+                    err => {
+                        console.log('err', err)
+                        return of(err)
+                    }
+                )
+            );
+    }
+
 
 }

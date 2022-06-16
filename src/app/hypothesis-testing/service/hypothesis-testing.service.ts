@@ -19,4 +19,13 @@ export class HypothesisTestingService {
         return combineLatest(mergedCalls)
     }
 
+    public getKolmogorovSmirnovValues(kolmogorovSmirnovValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisTestingLocator.getKolmogorovSmirnovValues(kolmogorovSmirnovValues)
+            .pipe(
+                tap(
+                    res => console.log('kolmogorov smirnov service result is', res)
+                )
+            );
+    }
+
 }
