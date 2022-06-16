@@ -12,6 +12,7 @@ import { TTestComponent } from './pages/t-test/t-test.component';
 import { MathjaxModule } from 'mathjax-angular';
 import { DataTablesModule } from 'angular-datatables';
 import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-smirnov/kolmogorov-smirnov.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-s
         ReactiveFormsModule,
         MathjaxModule.forChild(),
         DataTablesModule,
-        CommonModule
+        CommonModule,
+        PdfViewerModule
     ],
     exports: [
         HypothesisTestingComponent
