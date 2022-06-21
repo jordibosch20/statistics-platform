@@ -44,7 +44,7 @@ export class AnovaComponent implements OnInit {
     }
   );
 
-  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/TFM.pdf?alt=media&token=91537811-0a2a-47db-9cab-2ecefefd96ea";
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/TFM%20(2)-10-12.pdf?alt=media&token=497ed7a9-d4b9-4a02-8ec7-66dd5b08d71f";
 
   dtOptions: DataTables.Settings = {};
 
