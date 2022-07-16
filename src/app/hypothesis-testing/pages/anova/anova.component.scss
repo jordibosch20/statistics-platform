@@ -150,6 +150,7 @@ div.container {
   div.imageWrapper{
     display:flex;
     flex-direction: row;
+    flex-wrap:wrap;
     justify-content: space-around;
   }
 
