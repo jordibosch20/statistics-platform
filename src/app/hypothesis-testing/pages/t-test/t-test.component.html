@@ -31,7 +31,6 @@
     </div>
     <div>
     </div>
-  </div>
   <div class="imageWrapper">
     <div #targetScroll class="firstImage">
       <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
@@ -67,7 +66,7 @@
   </div>
   <div class="leveneTest" *ngIf="imageToShow1">
     <h2>Homocedasticity Test</h2>
-    In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
+    In order to compute T Test, we should make sure variance is the same in both groups. Levene's Test help us
     verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
     <div *ngIf="resultsHomocedasticity">
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
@@ -87,7 +86,7 @@
     </div>
   </div>
   <div *ngIf="resultstTestComputation">
-    <h2>TTest Analysis</h2>
+    <h2>T Test Analysis</h2>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <tr>
@@ -103,3 +102,4 @@
     </tbody>
   </table>
   </div>
+</div>

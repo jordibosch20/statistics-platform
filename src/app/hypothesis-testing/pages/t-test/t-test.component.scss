@@ -1,6 +1,9 @@
 div.container {
-    padding: 8px;
     width: 100%;
+    font-size: 14px;
+    padding: 32px;
+    width: 100%;
+    box-sizing: border-box;
 
     .title {
       text-align: center
@@ -14,7 +17,7 @@ div.container {
       align-items: flex-start;
       box-sizing: border-box;
       margin: 16px;
-      height: 60vh;
+      height: 50vh;
 
       div.parameters {
         flex-grow: 1;
@@ -24,6 +27,7 @@ div.container {
         height: 100%;
         box-sizing: border-box;
         justify-content: space-between;
+        flex-wrap:wrap;
 
         div.inputs{
           input{
