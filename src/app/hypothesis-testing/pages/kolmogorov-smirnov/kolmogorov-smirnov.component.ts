@@ -14,7 +14,7 @@ import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hyp
 })
 export class KolmogorovSmirnov implements OnInit {
 
-  @ViewChild('targetScroll', { static: false }) private scrollElement!: ElementRef;
+  dtOptions: DataTables.Settings = {};
 
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
 
@@ -22,7 +22,7 @@ export class KolmogorovSmirnov implements OnInit {
   public imageToShow1: any;
   public imageToShow2: any;
   public resultsHomocedasticity: any;
-  public resultsAnovaComputation: any;
+  public resultskolmogorovSmirnovValues: any;
   public resultsAnovaTukey: any;
   public resultsAnovaNormality: any;
   public numberTreatments: number = 3;
@@ -40,8 +40,6 @@ export class KolmogorovSmirnov implements OnInit {
       ])
     }
   );
-
-  dtOptions: DataTables.Settings = {};
 
   public getTextareasFormArray(): FormArray {
     return this.formGroup.get('textAreaFormArray') as FormArray
@@ -104,12 +102,12 @@ export class KolmogorovSmirnov implements OnInit {
       ])
       .pipe(
         map(
-        ([result]) => {
-          if(!!result) {
+        ([resultskolmogorovSmirnovValues]) => {
+          if(!!resultskolmogorovSmirnovValues) {
             this.isComputing = false;
-            this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[0]))
-            this.imageToShow2 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[1]))
-            setTimeout(() =>  this.scrollElement.nativeElement.scrollIntoView({block:'start', inline: 'nearest', behavior: 'smooth'}), 70);
+          }
+          if(!!resultskolmogorovSmirnovValues) {
+            this.resultskolmogorovSmirnovValues = resultskolmogorovSmirnovValues
           }
       })
       )

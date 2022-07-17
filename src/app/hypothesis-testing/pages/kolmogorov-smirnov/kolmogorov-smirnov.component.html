@@ -18,9 +18,6 @@ compute the empirical distributions function for the two samples. <br><br>Our st
       </div>
     </div>
     <br>
-  <div *ngIf="selected">
-  </div>
-
   <div class="calculator" [formGroup]="formGroup">
     <div class="parameters">
       <div class="inputs">
@@ -38,95 +35,19 @@ compute the empirical distributions function for the two samples. <br><br>Our st
       </div>
     </div>
   </div>
-</div>
-<div class="imageWrapper">
-  <div #targetScroll class="firstImage">
-    <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
-    <img [src]="imageToShow1">
-  </div>
-  <div class="secondImage">
-    <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
-    <img [src]="imageToShow2">
-  </div>
-</div>
-<div *ngIf="resultsAnovaNormality">
-  <h2>Normality test (Saphiro-Wilk)</h2>
-  <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
-    If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
-    we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
-  </p>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaNormality[1]">
-        <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-          {{cell}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="leveneTest" *ngIf="imageToShow1">
-  <h2>Homocedasticity Test</h2>
-  In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
-  verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
-  <div *ngIf="resultsHomocedasticity">
+  <div *ngIf="resultskolmogorovSmirnovValues">
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <tr>
-          <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
+          <th>Statistic</th>
+          <th>P-Value</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of resultsHomocedasticity[1]">
-          <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-            {{cell}}
-          </td>
+        <tr>
+          <td *ngFor="let value of resultskolmogorovSmirnovValues">{{value}}</td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
-<popup *ngIf="isComputing">
-</popup>
-<div *ngIf="resultsAnovaComputation">
-  <h2>Anova Computation</h2>
-  <p>Finally when all assumptions have been verified we can apply ANOVA. As staten before, if some of the assumptions are not true, ANOVA can give results that are not accurate.
-    Check the explanation of the ANOVA (hypothesis needed) on the top of this page to check what are the problems in this cases.
-  </p>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaComputation[1]">
-        <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-          {{cell}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div *ngIf="resultsAnovaTukey">
-  <h2>Tukey Pairwise Analysis</h2>
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-    <thead>
-      <tr>
-        <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of resultsAnovaTukey[1]">
-      <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-        {{cell}}
-      </td>
-    </tr>
-  </tbody>
-</table>
 </div>
