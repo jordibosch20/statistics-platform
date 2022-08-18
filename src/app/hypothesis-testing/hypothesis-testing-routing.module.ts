@@ -4,6 +4,7 @@ import { HypothesisTestingComponent } from 'src/app/hypothesis-testing/hypothesi
 import { AnovaComponent } from 'src/app/hypothesis-testing/pages/anova/anova.component';
 import { ChiSquaredComponent } from 'src/app/hypothesis-testing/pages/chi-squared/chi-squared.component';
 import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-smirnov/kolmogorov-smirnov.component';
+import { ShapiroWilkComponent } from 'src/app/hypothesis-testing/pages/shapiro-wilk/shapiro-wilk.component';
 import { TTestComponent } from 'src/app/hypothesis-testing/pages/t-test/t-test.component';
 import { TestListComponent } from 'src/app/hypothesis-testing/pages/test-list/test-list.component';
 
@@ -28,7 +29,11 @@ const routes: Routes = [
         component: KolmogorovSmirnov
       },
       {
-        path: 'chiSquared',
+        path: 'shapiro-wilk',
+        component: ShapiroWilkComponent
+      },
+      {
+        path: 'sha',
         component: ChiSquaredComponent
       },
       {

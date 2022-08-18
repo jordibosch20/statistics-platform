@@ -13,6 +13,7 @@ import { MathjaxModule } from 'mathjax-angular';
 import { DataTablesModule } from 'angular-datatables';
 import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-smirnov/kolmogorov-smirnov.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ShapiroWilkComponent } from 'src/app/hypothesis-testing/pages/shapiro-wilk/shapiro-wilk.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         ChiSquaredComponent,
         TestListComponent,
         TTestComponent,
-        KolmogorovSmirnov
+        KolmogorovSmirnov,
+        ShapiroWilkComponent
     ],
     imports: [
         ComponentsModule,
