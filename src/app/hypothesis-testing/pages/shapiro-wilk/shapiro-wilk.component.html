@@ -9,30 +9,23 @@
           </button>
         </div>
     </div>
-    <p> Anova <strong> (Analysis of variance) </strong> is the most widely
-      analysis tool in statistics that splits a
-      variability in two parts, the systematic part and the random part. </p>
+    <p>  <strong> Saphiro Wilk </strong> is a widely used test. </p>
     <p>
-      It is used to compare the means of three of more independent treatments and it is an extension of t-test to multiple
-      groups.
+      It is used to check if the samples of a group come from a normal distribution or not.
     </p>
-      We want to test the null hypothesis <span style="display:inline-block" [mathjax]="'$H0$'"></span>: which states that there is no differences between the mean of the different groups, with respect to the alternative
-      hypothesis <span style="display:inline-block" [mathjax]="'$H1$'"></span><br> which states that there exists at least a pair of distinct means.
+      We want to test the null hypothesis <span style="display:inline-block" [mathjax]="'$H0$'"></span>: which states that the samples from the group follow a normal distribution.
+      <span style="display:inline-block" [mathjax]="'$H1$'"></span><br> which states that the samples from the group don't follow a normal distribution.
       Formally this can be staten as: <br><br>
       <div class="hypothesis">
         <div class="hypothesis-box">
-          <div class="inline" [mathjax]="'$H0: \\mu_{1} = \\mu_{2} = \\cdots = \\mu_{k}$'"></div>
-          <div class="inline" [mathjax]="'$H1: \\exists  j, k \\hspace{0.2cm} | \\hspace{0.2cm} \\mu_{j} \\neq \\mu_{k}$'"></div>
+          <div class="inline" [mathjax]="'$H0:  X \\sim \\mathcal{N}(\\mu,\\,\\sigma^{2})$'"></div>
+          <div class="inline" [mathjax]="'$H1:  X \\not\\sim \\mathcal{N}(\\mu,\\,\\sigma^{2})$'"></div>
         </div>
       </div>
       <br>
-<!--
     <div class="calculator" [formGroup]="formGroup">
       <div class="parameters">
         <div class="inputs">
-          <strong><label for="prova">Choose the number of different treatments:</label></strong><br>
-          <input type="number" id="prova" formControlName="numberTreatments">
-          <br><br>
           <strong><label for="significance-level">Enter the significance level:</label></strong><br>
           <input type="text" id="significance-level" value="0.05">
         </div>
@@ -57,8 +50,8 @@
         <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
         <img [src]="imageToShow2">
       </div>
-    </div> -->
-    <!-- <div *ngIf="resultsAnovaNormality">
+    </div>
+ <div *ngIf="resultsSaphireWilkNormality">
       <h2>Normality test (Saphiro-Wilk)</h2>
       <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
         If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
@@ -67,78 +60,20 @@
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
           <tr>
-            <th *ngFor="let colName of resultsAnovaNormality[0]">{{colName}}</th>
+            <th>W Statistic</th>
+            <th>P Value</th>
+            <th>Is Normal?</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of resultsAnovaNormality[1]">
-            <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-              {{cell}}
-            </td>
+          <tr>
+            <td *ngFor="let value of resultsSaphireWilkNormality[1][0]">{{value}}</td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="leveneTest" *ngIf="imageToShow1">
-      <h2>Homocedasticity Test</h2>
-      In order to compute ANOVA, we should make sure variance is the same in every group. Levene's Test help us
-      verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
-      <div *ngIf="resultsHomocedasticity">
-        <table datatable [dtOptions]="dtOptions" class="row-border hover">
-          <thead>
-            <tr>
-              <th *ngFor="let colName of resultsHomocedasticity[0]">{{colName}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let row of resultsHomocedasticity[1]">
-              <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-                {{cell}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
     <popup *ngIf="isComputing">
     </popup>
-    <div *ngIf="resultsAnovaComputation">
-      <h2>Anova Computation</h2>
-      <p>Finally when all assumptions have been verified we can apply ANOVA. As staten before, if some of the assumptions are not true, ANOVA can give results that are not accurate.
-        Check the explanation of the ANOVA (hypothesis needed) on the top of this page to check what are the problems in this cases.
-      </p>
-      <table datatable [dtOptions]="dtOptions" class="row-border hover">
-        <thead>
-          <tr>
-            <th *ngFor="let colName of resultsAnovaComputation[0]">{{colName}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of resultsAnovaComputation[1]">
-            <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-              {{cell}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div *ngIf="resultsAnovaTukey">
-      <h2>Tukey Pairwise Analysis</h2>
-      <table datatable [dtOptions]="dtOptions" class="row-border hover">
-        <thead>
-          <tr>
-            <th *ngFor="let colName of resultsAnovaTukey[0]">{{colName}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of resultsAnovaTukey[1]">
-          <td *ngFor="let cell of row" [class.green]="cell === true" [class.red]="cell === false">
-            {{cell}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
     <div class="pdfWrapper" *ngIf="selected">
       <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
       [show-borders]="true" [render-text-mode]="1">
@@ -149,5 +84,5 @@
           Close Explanation
         </button>
       </div>
-    </div> -->
+    </div>
   </div>

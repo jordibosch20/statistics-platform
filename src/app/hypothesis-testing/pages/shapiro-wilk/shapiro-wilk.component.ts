@@ -25,19 +25,13 @@ export class ShapiroWilkComponent {
   public resultsHomocedasticity: any;
   public resultsAnovaComputation: any;
   public resultsAnovaTukey: any;
-  public resultsAnovaNormality: any;
+  public resultsSaphireWilkNormality: any;
   public numberTreatments: number = 3;
   public isComputing: boolean = false;
   public formGroup = new FormGroup(
     {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array([
-        this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
-        }),
-        this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
-        }),
         this.fb.group({
           values: new FormControl(returnRandomNumbers(70))
         })
@@ -104,34 +98,17 @@ export class ShapiroWilkComponent {
       .map(
         anovaValues => this.transformIntoArray(anovaValues)
       );
-    console.log('anovaValues are', anovaValues);
     return combineLatest([
-        this.hypothesisTestingService.getHypothesisCharts(anovaValues),
-        this.anovaService.getAnovaHomocedasticity(anovaValues),
-        this.anovaService.getAnovaComputation(anovaValues),
-        this.anovaService.getAnovaTukey(anovaValues),
         this.anovaService.getNormalityComputation(anovaValues),
       ])
       .pipe(
         map(
-        ([result, homocedasticity, anovaComputation, anovaTukey, normalityComputation]) => {
-          if(!!result) {
-            this.isComputing = false;
-            this.imageToShow1 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[0]))
-            this.imageToShow2 = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(result[1]))
-            setTimeout(() =>  this.scrollElement.nativeElement.scrollIntoView({block:'start', inline: 'nearest', behavior: 'smooth'}), 70);
-          }
-          if(!!homocedasticity) {
-            this.resultsHomocedasticity = homocedasticity
-          }
-          if(!!anovaComputation) {
-            this.resultsAnovaComputation = anovaComputation
-          }
-          if(!!anovaTukey) {
-            this.resultsAnovaTukey = anovaTukey
-          }
+        ([normalityComputation]) => {
+          this.isComputing = false;
+
           if(!!normalityComputation) {
-            this.resultsAnovaNormality = normalityComputation
+            this.resultsSaphireWilkNormality = normalityComputation
+            console.log('resultsSaphireWilkNormality', this.resultsSaphireWilkNormality)
           }
       })
       )
