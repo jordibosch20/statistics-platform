@@ -1,0 +1,94 @@
+<div #prova class="container">
+    <div class="title">
+      <h2-title [title]="'What is Mann Whitney?'" class="title"></h2-title>
+        <div class="knowMore">
+          <button (click)="selected = !selected" [class.active]="selected === true">
+            <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
+            <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
+            View Full Explanation
+          </button>
+        </div>
+    </div>
+    <p>  <strong> Mann Whitney </strong> is a widely used test. </p>
+    <p>
+      Also known as the U-test or Range Sum by Wilcoxon, it is used to check if, given two groups of samples, the probability that x (coming from the first group) being
+      bigger than y (coming from the second group) is the same as the probability of y being bigger than x. It is, therefore,
+      a test to verify if the two samples come from equidistributed populations.
+    </p>
+      <br><br>
+      <div class="hypothesis">
+        <div class="hypothesis-box">
+          <div class="inline" [mathjax]="'$H0:  P(x > y) = P(y > x) \\hspace{0.2cm} x \\in G1, y \\in G2$'"></div>
+          <div class="inline" [mathjax]="'$H1:  P(x > y) \\neq P(y > x) \\hspace{0.2cm} x \\in G1, y \\in G2$'"></div>
+        </div>
+      </div>
+      <br>
+    <div class="calculator" [formGroup]="formGroup">
+      <div class="parameters">
+        <div class="inputs" [formGroup]="dimensionsFormGroup">
+          <strong><label for="significance-level">Enter the significance level:</label></strong><br>
+          <input type="text" id="significance-level" value="0.05">
+          <strong><label for="firstVariable">Number of different categories for the first variable</label></strong><br>
+          <input type="text" id="firstVariable" formControlName="firstVariable">
+          <strong><label for="secondVariable">Number of different categories for the second variable</label></strong><br>
+          <input type="text" id="secondVariable" formControlName="secondVariable">
+        </div>
+        <div class="buttonCompute">
+          <button class="final" (click)="computeAnova()">Compute test</button>
+        </div>
+      </div>
+      <div class="explanation" formArrayName='textAreaFormArray'>
+        <div class="container" [style.grid-template-columns]="getNumberColumns() | async">
+          <div [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
+            <textarea formControlName='values'>
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="imageWrapper">
+      <div #targetScroll class="firstImage">
+        <h2 *ngIf="imageToShow1">Boxplot of our data</h2>
+        <img [src]="imageToShow1">
+      </div>
+      <div class="secondImage">
+        <h2 *ngIf="imageToShow2">Normality plot for each of the treatments</h2>
+        <img [src]="imageToShow2">
+      </div>
+    </div>
+ <div *ngIf="resultsSaphireWilkNormality">
+      <h2>Normality test (Saphiro-Wilk)</h2>
+      <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
+        If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
+        we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
+      </p>
+      <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th>W Statistic</th>
+            <th>P Value</th>
+            <th>Is Normal?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngFor="let value of resultsSaphireWilkNormality[1][0]">{{value}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <popup *ngIf="isComputing">
+    </popup>
+    <div class="pdfWrapper" *ngIf="selected">
+      <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
+      [show-borders]="true" [render-text-mode]="1">
+      </pdf-viewer>
+      <div class="closePopup">
+        <button (click)="closePopup()">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+          Close Explanation
+        </button>
+      </div>
+    </div>
+  </div>

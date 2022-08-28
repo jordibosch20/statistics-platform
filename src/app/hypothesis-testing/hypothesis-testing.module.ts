@@ -14,6 +14,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { KolmogorovSmirnov } from 'src/app/hypothesis-testing/pages/kolmogorov-smirnov/kolmogorov-smirnov.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ShapiroWilkComponent } from 'src/app/hypothesis-testing/pages/shapiro-wilk/shapiro-wilk.component';
+import { MannWhitneyComponent } from 'src/app/hypothesis-testing/pages/mann-whitney/mann-whitney.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { ShapiroWilkComponent } from 'src/app/hypothesis-testing/pages/shapiro-w
         TestListComponent,
         TTestComponent,
         KolmogorovSmirnov,
-        ShapiroWilkComponent
+        ShapiroWilkComponent,
+        MannWhitneyComponent
     ],
     imports: [
         ComponentsModule,
