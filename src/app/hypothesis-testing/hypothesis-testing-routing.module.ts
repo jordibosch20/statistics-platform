@@ -38,7 +38,7 @@ const routes: Routes = [
         component: MannWhitneyComponent
       },
       {
-        path: 'sha',
+        path: 'chi-squared',
         component: ChiSquaredComponent
       },
       {

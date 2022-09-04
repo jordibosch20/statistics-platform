@@ -1,185 +1,143 @@
 div.container {
-    width: 100%;
-    font-size: 14px;
-    padding: 32px;
-    box-sizing: border-box;
+  width: 100%;
+  font-size: 14px;
+  padding: 32px;
+  box-sizing: border-box;
 
-    div.title{
+  .hypothesis {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+    .hypothesis-box{
       display:flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    div.knowMore{
-      button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 0.5px solid rgb(219, 146, 146);
-        border-radius: 2px;
-        background-color: #e4c8af;
-        cursor: pointer;
-        padding: 5px;
-        margin:15px;
-      }
-      button.active{
-        background-color:#e4d8cd;
-      }
-    }
-
-    div.closePopup{
-      button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 0.5px solid rgb(219, 146, 146);
-        border-radius: 2px;
-        background-color: #e4c8af;
-        cursor: pointer;
-        padding: 15px;
-        margin:15px;
-      }
-      button.active{
-        background-color:#e4d8cd;
-      }
-    }
-
-    .hypothesis {
-
-      display: flex;
       align-items: center;
       flex-direction: column;
-
-      .hypothesis-box{
-        display:flex;
-        align-items: center;
-        flex-direction: column;
-        border: 2px solid #e13a3a;
-        padding: 12px 60px;
-        gap: 12px;
-      }
+      border: 2px solid #e13a3a;
+      padding: 12px 60px;
+      gap: 12px;
     }
+  }
 
-    .title {
-      text-align: center
+  .title {
+    text-align: center
+  }
+
+  div.knowMore{
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0.5px solid rgb(219, 146, 146);
+      border-radius: 2px;
+      background-color: #e4c8af;
+      cursor: pointer;
+      padding: 5px;
     }
+    button.active{
+      background-color:#e4d8cd;
+    }
+  }
 
-    div.calculator {
+  div.calculator {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 16px;
+    height: 50vh;
+
+    div.parameters {
       flex-grow: 1;
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: flex-start;
+      flex-direction: column;
       box-sizing: border-box;
-      margin: 16px;
-      height: 50vh;
+      justify-content: space-between;
+      margin: 8px;
+      padding-top: 8px;
+      height: 100%;
 
-      div.parameters {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        justify-content: space-between;
-        margin: 8px;
-        padding-top: 8px;
-        height: 100%;
-
-        div.inputs{
-          input{
-            margin: 12px 0;
-            box-sizing: border-box;
-            width:100%
-          }
-        }
-
-        div.buttonCompute{
-          button{
-            box-sizing: border-box;
-            width:100%
-          }
-        }
-
-        button.final {
-          padding: 8px;
-          border: 1px solid black;
-          font-weight: bold;
-          border-radius: 5px;
-          background-color: #FBC490;
-          cursor: pointer;
-        }
-
-        button.final:active {
-          transform: translateY(2px);
+      div.inputs{
+        input{
+          margin: 12px 0;
+          box-sizing: border-box;
+          width:100%
         }
       }
 
-      div.explanation {
-        flex-grow: 4;
-        flex-direction: row;
-        justify-content: space-around;
-        margin: 8px;
-        height: 100%;
-        flex-wrap: wrap;
-
-        div.container{
-          display: grid;
-          grid-template-columns: auto auto auto;
+      div.buttonCompute{
+        button{
+          box-sizing: border-box;
+          width:100%
         }
+      }
 
+      button.final {
+        padding: 8px;
+        border: 1px solid black;
+        font-weight: bold;
+        border-radius: 5px;
+        background-color: #FBC490;
+        cursor: pointer;
+      }
 
-        .wrapper-textarea {
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
-          text-align: center;
-          margin: 0 8px;
-
-          textarea {
-            height: 100%;
-            width: 100%;
-            background-color: #FFFAF4;
-            min-height: 128px;
-          }
-        }
+      button.final:active {
+        transform: translateY(2px);
       }
     }
 
-    td.green{
-      color: rgb(34, 199, 34);
-    }
-
-    td.red{
-      color: red;
-    }
-
-    div.imageWrapper{
-      display:flex;
-      flex-direction: row;
-      flex-wrap:wrap;
-      justify-content: space-around;
-    }
-
-    div.firstImage{
-      text-align: center;
-      box-sizing: box-sizing;
-    }
-
-    div.secondImage{
-      text-align: center;
-      box-sizing: box-sizing;
-    }
-
-    div.pdfWrapper{
+    div.explanation {
+      flex-grow: 2;
       display: flex;
       flex-direction: row;
-      background-color:white;
-      z-index: 10000;
-      position:absolute;
-      top: 55px;
-      width: 100%;
+      justify-content: space-around;
+      margin: 8px;
+      height: 100%;
+      flex-wrap: wrap;
 
-      button{
-        height: 18px;
+      .wrapper-textarea {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        text-align: center;
+        margin: 0 8px;
+
+        textarea {
+          height: 100%;
+          width: 100%;
+          background-color: #FFFAF4;
+          min-height: 128px;
+        }
       }
     }
   }
+}
+
+td.green{
+  color: rgb(34, 199, 34);
+}
+
+td.red{
+  color: red;
+}
+
+div.imageWrapper{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap:wrap;
+}
+
+div.firstImage{
+  text-align: center;
+  box-sizing: box-sizing;
+}
+
+div.secondImage{
+  text-align: center;
+  box-sizing: box-sizing;
+}

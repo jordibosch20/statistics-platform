@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  host: 'https://statistics-iv4frwev3a-ew.a.run.app'
-  //host: 'http://127.0.0.1:8000'
+  //host: 'https://statistics-iv4frwev3a-ew.a.run.app'
+  host: 'http://127.0.0.1:8000'
 };
 
 /*
