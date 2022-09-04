@@ -42,6 +42,7 @@ export class ChiSquaredComponent {
   );
   public gridStyle:any = {};
   public numCols: number = 3;
+  public numRows: number = 4;
 
   public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/TFM%20(2)-10-12.pdf?alt=media&token=497ed7a9-d4b9-4a02-8ec7-66dd5b08d71f";
 
@@ -93,6 +94,9 @@ export class ChiSquaredComponent {
       this.dimensionsFormGroup.get("secondVariable")?.valueChanges
       .pipe(
         tap(
+          numRows => this.numRows = numRows
+        ),
+        tap(
           () => this.getTotalCells()
         )
       ).subscribe();
@@ -121,13 +125,13 @@ export class ChiSquaredComponent {
 
   private transformIntoArrayOfArrays(formValues: Array<any>): Array<Array<number>>{
     let appendedResults: Array<number> = [];
-    for(let i = 0; i< formValues.length; ++i){
+    for(let i = 0; i < formValues.length; ++i){
       appendedResults.push(formValues[i].values[0])
     }
     // Get number of elements per subarray
-    const numsPerGroup = Math.ceil(appendedResults.length / this.numCols);
+    const numsPerGroup = Math.ceil(appendedResults.length / this.numRows);
     // Create array based on number of groups
-    const result = new Array(this.numCols)
+    const result = new Array(Number(this.numRows))
       .fill('')
       .map((_, i) => appendedResults.slice(i * numsPerGroup, (i + 1) * numsPerGroup));
     console.log('result', result);
