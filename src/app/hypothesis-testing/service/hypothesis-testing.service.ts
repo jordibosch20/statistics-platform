@@ -28,4 +28,13 @@ export class HypothesisTestingService {
             );
     }
 
+    public getMannWhitneyValues(mannWhitneyValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisTestingLocator.getMannWhitneyValues(mannWhitneyValues)
+            .pipe(
+                tap(
+                    res => console.log('kolmogorov smirnov service result is', res)
+                )
+            );
+    }
+
 }

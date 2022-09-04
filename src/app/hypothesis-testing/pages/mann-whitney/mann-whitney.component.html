@@ -33,17 +33,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="resultskolmogorovSmirnovValues">
+  <div *ngIf="resultsMannWhitney">
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
-        <tr>
-          <th>Statistic</th>
-          <th>P-Value</th>
-        </tr>
+        <th *ngFor="let title of getKeys(resultsMannWhitney)">{{title}}
       </thead>
       <tbody>
         <tr>
-          <td *ngFor="let value of resultskolmogorovSmirnovValues">{{value}}</td>
+          <td *ngFor="let value of getValues(resultsMannWhitney)">{{value}}</td>
         </tr>
       </tbody>
     </table>

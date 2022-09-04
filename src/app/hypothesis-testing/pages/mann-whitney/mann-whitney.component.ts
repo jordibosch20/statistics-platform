@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { objectEach } from 'highcharts';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
@@ -21,9 +22,10 @@ export class MannWhitneyComponent {
   public imageToShow1: any;
   public imageToShow2: any;
   public resultsHomocedasticity: any;
-  public resultskolmogorovSmirnovValues: any;
+  public mannWhitneyValues: any;
   public resultsAnovaTukey: any;
   public resultsAnovaNormality: any;
+  public resultsMannWhitney: any;
   public numberTreatments: number = 3;
   public isComputing: boolean = false;
   public formGroup = new FormGroup(
@@ -88,28 +90,41 @@ export class MannWhitneyComponent {
   public computeAnova(): any {
     this.isComputing = true;
     const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> | string }> } = this.formGroup.getRawValue();
-    const kolmogorovSmirnovValues = formValues.textAreaFormArray
+    const mannWhitneyValues = formValues.textAreaFormArray
       .map(
         textAreaForm => textAreaForm.values
       )
       .map(
-        kolmogorovSmirnovValues => this.transformIntoArray(kolmogorovSmirnovValues)
+        mannWhitneyValues => this.transformIntoArray(mannWhitneyValues)
       );
-    console.log('kolmogorovSmirnovValues are', kolmogorovSmirnovValues);
+    console.log('mannWhitneyValues are', mannWhitneyValues);
     return combineLatest([
-        this.hypothesisTestingService.getKolmogorovSmirnovValues(kolmogorovSmirnovValues)
+        this.hypothesisTestingService.getMannWhitneyValues(mannWhitneyValues)
       ])
       .pipe(
         map(
-        ([resultskolmogorovSmirnovValues]) => {
-          if(!!resultskolmogorovSmirnovValues) {
+        ([mannWhitneyValues]) => {
+          if(!!mannWhitneyValues) {
             this.isComputing = false;
           }
-          if(!!resultskolmogorovSmirnovValues) {
-            this.resultskolmogorovSmirnovValues = resultskolmogorovSmirnovValues
+          if(!!mannWhitneyValues) {
+            this.resultsMannWhitney = mannWhitneyValues
           }
+          console.log('resultats mann', this.resultsMannWhitney)
       })
       )
       .subscribe()
+  }
+
+  public getKeys(obj: any):Array<string>{
+    return Object.keys(obj)
+  }
+  public getValues(obj: any):Array<string>{
+    let valors = Object.values(obj)
+    .map(
+      (value:any) => value['MWU']
+    );
+    console.log('values', valors);
+    return valors;
   }
 }

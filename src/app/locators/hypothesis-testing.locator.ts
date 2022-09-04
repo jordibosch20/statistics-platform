@@ -59,5 +59,29 @@ export class HypothesisTestingLocator {
             );
     }
 
+    public getMannWhitneyValues(mannWhitneyValues: Array<Array<number>>): Observable<any> {
+        const url: string = environment.host + '/mann-whitney';
+        const headers: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+        return this.httpClient.post(url, JSON.stringify({
+            'mannWhitneyValues': mannWhitneyValues
+        }), {
+            headers: headers,
+            observe: 'response'
+        })
+            .pipe(
+                map(
+                    (event: any) => event.body
+                ),
+                catchError(
+                    err => {
+                        console.log('err', err)
+                        return of(err)
+                    }
+                )
+            );
+    }
+
 
 }
