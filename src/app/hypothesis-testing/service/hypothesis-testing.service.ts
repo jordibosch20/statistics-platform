@@ -37,4 +37,13 @@ export class HypothesisTestingService {
             );
     }
 
+    public getChiSquaredValues(chiSquaredValues: Array<Array<number>>): Observable<any> {
+        return this.hypothesisTestingLocator.getChiSquaredValues(chiSquaredValues)
+            .pipe(
+                tap(
+                    res => console.log('kolmogorov smirnov service result is', res)
+                )
+            );
+    }
+
 }

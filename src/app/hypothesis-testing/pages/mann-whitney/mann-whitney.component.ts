@@ -120,11 +120,9 @@ export class MannWhitneyComponent {
     return Object.keys(obj)
   }
   public getValues(obj: any):Array<string>{
-    let valors = Object.values(obj)
+    return Object.values(obj)
     .map(
       (value:any) => value['MWU']
     );
-    console.log('values', valors);
-    return valors;
   }
 }

@@ -24,7 +24,8 @@ export class ChiSquaredComponent {
   public resultsHomocedasticity: any;
   public resultsAnovaComputation: any;
   public resultsAnovaTukey: any;
-  public resultsSaphireWilkNormality: any;
+  public resultsChiSquared: any;
+  public pvalue: number = 0.05;
   public numberTreatments: number = 3;
   public isComputing: boolean = false;
   public dimensionsFormGroup = new FormGroup({
@@ -141,24 +142,19 @@ export class ChiSquaredComponent {
   public computeAnova(): any {
     this.isComputing = true;
     const formValues: { numberTreatments: number, textAreaFormArray: Array<{ values: Array<number> | string }> } = this.formGroup.getRawValue();
-    this.transformIntoArrayOfArrays(formValues.textAreaFormArray)
-    const anovaValues = formValues.textAreaFormArray
-      .map(
-        textAreaForm => textAreaForm.values
-      )
-      .map(
-        anovaValues =>  this.transformIntoArray(anovaValues)
-      );
+    let chiSquaredValues = this.transformIntoArrayOfArrays(formValues.textAreaFormArray)
     return combineLatest([
-        this.anovaService.getNormalityComputation(anovaValues),
+        this.hypothesisTestingService.getChiSquaredValues(chiSquaredValues)
       ])
       .pipe(
         map(
-        ([normalityComputation]) => {
+        ([chiSquaredComputation]) => {
           this.isComputing = false;
-          if(!!normalityComputation) {
-            this.resultsSaphireWilkNormality = normalityComputation
-            console.log('resultsSaphireWilkNormality', this.resultsSaphireWilkNormality)
+          if(!!chiSquaredComputation) {
+            this.resultsChiSquared = JSON.parse(chiSquaredComputation);
+            this.pvalue = this.resultsChiSquared["p-value"];
+            console.log('resultsChiSquared', this.resultsChiSquared)
+            console.log('pvalue', this.pvalue)
           }
       })
       )

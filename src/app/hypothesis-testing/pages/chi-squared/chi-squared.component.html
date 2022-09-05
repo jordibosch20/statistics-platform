@@ -72,23 +72,19 @@
         <img [src]="imageToShow2">
       </div>
     </div>
- <div *ngIf="resultsSaphireWilkNormality">
-      <h2>Normality test (Saphiro-Wilk)</h2>
-      <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
-        If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
-        we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
+ <div *ngIf="resultsChiSquared">
+      <h2>Chi Squared test (Saphiro-Wilk)</h2>
+      <p>We will apply Chi Squared Independence test to our data. In the results we will see the p-value associated with the test.<br><br>
       </p>
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
           <tr>
-            <th>W Statistic</th>
-            <th>P Value</th>
-            <th>Is Normal?</th>
+            <th>P-Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td *ngFor="let value of resultsSaphireWilkNormality[1][0]">{{value}}</td>
+            <td>{{resultsChiSquared["p-value"]}}</td>
           </tr>
         </tbody>
       </table>

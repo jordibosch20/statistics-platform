@@ -83,5 +83,29 @@ export class HypothesisTestingLocator {
             );
     }
 
+    public getChiSquaredValues(chiSquaredValues: Array<Array<number>>): Observable<any> {
+        const url: string = environment.host + '/chi-squared';
+        const headers: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+        return this.httpClient.post(url, JSON.stringify({
+            'chiSquaredValues': chiSquaredValues
+        }), {
+            headers: headers,
+            observe: 'response'
+        })
+            .pipe(
+                map(
+                    (event: any) => event.body
+                ),
+                catchError(
+                    err => {
+                        console.log('err', err)
+                        return of(err)
+                    }
+                )
+            );
+    }
+
 
 }
