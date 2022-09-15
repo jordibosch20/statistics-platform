@@ -1,7 +1,7 @@
 .container {
-
   height: 32px;
   display: flex;
+  padding: 4px 0px;
   align-items: center;
 
   a {
@@ -11,4 +11,10 @@
 
 .container:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .container{
+    font-size:10px;
+  }
 }

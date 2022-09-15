@@ -71,3 +71,84 @@ div.container {
     }
   }
 }
+div.container {
+  margin-left: 300px;
+  font-size: 14px;
+  padding: 32px;
+  box-sizing: border-box;
+
+  div.title{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .title {
+    text-align: center
+  }
+
+  div.calculator {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 16px;
+    height: 50vh;
+
+    div.buttonCompute{
+      button{
+        box-sizing: border-box;
+        width:100%;
+        margin-top: 16px;
+      }
+    }
+
+    button.final {
+      padding: 8px;
+      border: 1px solid black;
+      font-weight: bold;
+      border-radius: 5px;
+      background-color: #FBC490;
+      cursor: pointer;
+    }
+
+    button.final:active {
+      transform: translateY(2px);
+    }
+  }
+
+  div.explanation {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 8px;
+    height: 100%;
+    flex-wrap: wrap;
+
+    .wrapper-textarea {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: center;
+      margin: 0 8px;
+
+      textarea {
+        height: 100%;
+        width: 100%;
+        background-color: #FFFAF4;
+        min-height: 128px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  side-modal-descriptive-calculators{
+    display:none;
+  }
+  div.container {
+    margin-left: 0px;
+  }
+}

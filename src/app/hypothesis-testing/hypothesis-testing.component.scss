@@ -11,3 +11,14 @@ div.container {
     margin-left: 300px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  side-modal{
+    display:none;
+  }
+  div.container {
+    .wrapper {
+      margin-left: 0px;
+    }
+  }
+}

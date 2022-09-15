@@ -1,3 +1,4 @@
+
 div.container {
   margin-left: 300px;
   font-size: 14px;
@@ -69,5 +70,13 @@ div.container {
         min-height: 128px;
       }
     }
+  }
+}
+@media screen and (max-width: 480px) {
+  side-modal-descriptive-calculators{
+    display:none;
+  }
+  div.container {
+    margin-left: 0px;
   }
 }

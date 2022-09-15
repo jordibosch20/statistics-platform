@@ -43,3 +43,25 @@ div.title {
     }
   }
 }
+
+
+@media screen and (max-width: 480px) {
+  div.title{
+    .wrapper-title{
+      .logo{
+      margin: 0px 8px;
+      }
+    .headerOptions {
+      a {
+        font-weight: 500;
+        margin: 0px 8px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  }
+
+}
