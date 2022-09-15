@@ -141,3 +141,12 @@ div.secondImage{
   text-align: center;
   box-sizing: box-sizing;
 }
+
+@media screen and (max-width: 480px) {
+  side-modal{
+    display:none;
+  }
+  div.container {
+    margin-left: 0px;
+  }
+}
