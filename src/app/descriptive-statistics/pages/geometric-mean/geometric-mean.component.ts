@@ -23,7 +23,7 @@ export class GeometricMeanComponent {
   }
 
   public compute(): void {
-    this.values =  this.formGroup.getRawValue().values;    this.values = this.transformIntoArray(this.values);
+    this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
     this.result = geometricMean(this.values);
 
