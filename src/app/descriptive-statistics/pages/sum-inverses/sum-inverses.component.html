@@ -5,19 +5,19 @@
   </div>
   <p>  <strong> The Sum Of Inverses </strong>of a sample is defined as <span style="display:inline-block" [mathjax]="'$\\sum_{i = 1}^{n}\\frac{1}{x_{i}}$'"></span>. <br>
     <br>
-  <div class="calculator">
-    <div class="explanation">
-      <div class="wrapper-textarea">
-          <h4>Enter your sample</h4>
-          <textarea></textarea>
-          <div class="buttonCompute">
-            <button class="final">Compute test</button>
-          </div>
+    <div class="calculator">
+      <div class="explanation">
+        <div class="wrapper-textarea" [formGroup]="formGroup">
+            <h4>Enter your sample</h4>
+            <textarea formControlName="values"></textarea>
+            <div class="buttonCompute">
+              <button class="final" (click)="compute()">Compute sum of inverses</button>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
   <br>
   <div *ngIf="result">
-    The mean is {{result}}
+    <b>The mean is {{result}}</b>
   </div>
 </div>

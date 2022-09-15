@@ -11,19 +11,19 @@
     <span style="display:inline-block" [mathjax]="'$s_{n} = \\frac{1}{n}\\sum_{i = 1}^{n}(x_{i}-\\overline{x})$'"></span> or the unbiased estimator and knwon as the sample variance <br><br>
     <span style="display:inline-block" [mathjax]="'$s_{n} = \\frac{1}{n - 1}\\sum_{i = 1}^{n}(x_{i}-\\overline{x})$'"></span>
     <br>
-  <div class="calculator">
-    <div class="explanation">
-      <div class="wrapper-textarea">
-          <h4>Enter your sample</h4>
-          <textarea></textarea>
-          <div class="buttonCompute">
-            <button class="final">Compute test</button>
-          </div>
+    <div class="calculator">
+      <div class="explanation">
+        <div class="wrapper-textarea" [formGroup]="formGroup">
+            <h4>Enter your sample</h4>
+            <textarea formControlName="values"></textarea>
+            <div class="buttonCompute">
+              <button class="final" (click)="compute()">Compute variance</button>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
   <br>
   <div *ngIf="result">
-    The mean is {{result}}
+    The variance is {{result}}
   </div>
 </div>

@@ -14,8 +14,17 @@ export class SumCubesComponent {
   });
   public result:any;
   public values: Array<number> = [];
+
+  private transformIntoArray(value: string | Array<number>): Array<number>{
+    if(typeof(value) === 'string'){
+      return value.split(',').map(x => Number(x))
+    }
+    return value;
+  }
+
   public compute(): void {
     this.values =  this.formGroup.getRawValue().values;
+    this.values = this.transformIntoArray(this.values);
     this.result = mean(this.values);
   }
 

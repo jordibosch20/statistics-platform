@@ -17,19 +17,17 @@ export class KurtosisComponent {
   });
   public result:any;
   public values: Array<number> = [];
-  public compute(): void {
-    this.values =  this.formGroup.getRawValue().values;
-    this.result = sampleKurtosis(this.values);
+
+  private transformIntoArray(value: string | Array<number>): Array<number>{
+    if(typeof(value) === 'string'){
+      return value.split(',').map(x => Number(x))
+    }
+    return value;
   }
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: false
-  };
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
-  ];
-
+  public compute(): void {
+    this.values =  this.formGroup.getRawValue().values;
+    this.values = this.transformIntoArray(this.values);
+    this.result = sampleKurtosis(this.values);
+  }
 }

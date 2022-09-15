@@ -7,17 +7,17 @@
     set of numbers by using the product of their values.<br></p>
     Mathematically, the Geometric mean of a distribution is defined as <span style="display:inline-block" [mathjax]="'$(\\prod_{i = 1}^{n}x_{i})^{\\frac{1}{n}} = \\sqrt[n](x_{1} \\cdots x_{n})$'"></span>.
     <br>
-  <div class="calculator">
-    <div class="explanation">
-      <div class="wrapper-textarea">
-          <h4>Enter your sample</h4>
-          <textarea></textarea>
-          <div class="buttonCompute">
-            <button class="final">Compute test</button>
-          </div>
+    <div class="calculator">
+      <div class="explanation">
+        <div class="wrapper-textarea" [formGroup]="formGroup">
+            <h4>Enter your sample</h4>
+            <textarea formControlName="values"></textarea>
+            <div class="buttonCompute">
+              <button class="final" (click)="compute()">Compute geometric mean</button>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
   <br>
   <div *ngIf="result">
     The mean is {{result}}
