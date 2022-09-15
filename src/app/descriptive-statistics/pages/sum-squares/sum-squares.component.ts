@@ -22,11 +22,15 @@ export class SumSquaresComponent {
     return value;
   }
 
+  private sumOfSquares(values: Array<number>){
+    return values.reduce((total, curr)=>total + curr**2, 0);
+  }
+
   public compute(): void {
     this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
-    console.log('values are', this.values);
-    this.result = mean(this.values);
+    this.result = this.sumOfSquares(this.values);
   }
+
 
 }

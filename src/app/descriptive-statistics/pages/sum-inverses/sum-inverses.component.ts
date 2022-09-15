@@ -22,10 +22,14 @@ export class SumInversesComponent {
     return value;
   }
 
+  private sumOfInverses(values: Array<number>){
+    return values.reduce((total, curr)=>total + 1/curr, 0);
+  }
+
   public compute(): void {
     this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
-    this.result = mean(this.values);
+    this.result = this.sumOfInverses(this.values);
   }
 
 

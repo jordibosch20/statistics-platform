@@ -10,7 +10,7 @@ import { returnRandomNumbers } from 'src/app/utils/utils';
 })
 export class GeometricMeanComponent {
   public formGroup: FormGroup = new FormGroup({
-    values: new FormControl(returnRandomNumbers(70))
+    values: new FormControl(returnRandomNumbers(30))
   });
   public result:any;
   public values: Array<number> = [];
@@ -26,7 +26,6 @@ export class GeometricMeanComponent {
     this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
     this.result = geometricMean(this.values);
-
   }
 
 }

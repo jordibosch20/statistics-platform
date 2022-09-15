@@ -14,9 +14,9 @@ export class SideModalDescriptiveCalculatorsComponent {
     { name: "Kurtosis Calculator", url: 'descriptive-statistics/kurtosis'},
     { name: "Geometric Mean Calculator", url: 'descriptive-statistics/geometric-mean'},
     { name: "Harmonic Mean Calculator", url: 'descriptive-statistics/harmonic-mean'},
+    { name: "Sum of Inverses Calculator", url: 'descriptive-statistics/sum-inverses' },
     { name: "Sum of Squares Calculator", url: 'descriptive-statistics/sum-squares'},
-    { name: "Sum of Cubes Calculator", url: 'descriptive-statistics/sum-cubes'},
-    { name: "Sum of Inverses Calculator", url: 'descriptive-statistics/sum-inverses' }
+    { name: "Sum of Cubes Calculator", url: 'descriptive-statistics/sum-cubes'}
   ];
 
 }

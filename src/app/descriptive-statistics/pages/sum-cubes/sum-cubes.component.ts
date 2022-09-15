@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { mean } from 'simple-statistics';
 import { returnRandomNumbers } from 'src/app/utils/utils';
 
 @Component({
@@ -22,12 +21,14 @@ export class SumCubesComponent {
     return value;
   }
 
+  private sumOfCubes(values: Array<number>){
+    return values.reduce((total, curr)=>total + curr**3, 0);
+  }
+
   public compute(): void {
     this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
-    this.result = mean(this.values);
+    this.result = this.sumOfCubes(this.values);
   }
-
-
 
 }
