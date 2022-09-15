@@ -16,7 +16,39 @@ const routes: Routes = [
       {
         path: 'variance',
         component: VarianceComponent
-      }
+      },
+      {
+        path: 'mean-median-mode',
+        component: VarianceComponent
+      },
+      {
+        path: 'skewness',
+        component: VarianceComponent
+      },
+      {
+        path: 'kurtosis',
+        component: VarianceComponent
+      },
+      {
+        path: 'geometric-mean',
+        component: VarianceComponent
+      },
+      {
+        path: 'harmonic-mean',
+        component: VarianceComponent
+      },
+      {
+        path: 'sum-squares',
+        component: VarianceComponent
+      },
+      {
+        path: 'sum-cubes',
+        component: VarianceComponent
+      },
+      {
+        path: 'sum-inverses',
+        component: VarianceComponent
+      },
     ]
   }
 ];

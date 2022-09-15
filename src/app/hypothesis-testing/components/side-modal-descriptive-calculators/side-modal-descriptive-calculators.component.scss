@@ -1,0 +1,19 @@
+.container {
+  position: fixed;
+  width: 300px;
+  top: 55px;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgb(206, 206, 206);
+  background-color: #FFF5EB;
+
+  h3 {
+    color: black;
+    padding: 8px;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    margin-left: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
