@@ -1,15 +1,14 @@
 <side-modal-descriptive-calculators></side-modal-descriptive-calculators>
 <div #prova class="container">
   <div class="title">
-    <h2-title [title]="'Variance Calculator'" class="title"></h2-title>
+    <h2-title [title]="'Mean Calculator'" class="title"></h2-title>
   </div>
-  <p>  <strong> The Variance </strong>of a distribution gives us a quantifiable way of
-  measuring the dispersion of a distribution.</p>
-    Mathematically, the variance of a distribution is defined as <span style="display:inline-block" [mathjax]="'$Var(X) = \\mathbb{E}[(X - \\mu)^{2}]$'"></span>. That is the
-    expected value of the differences between the values we observe and the mean.<br>
-    In the case we want to compute the best estimator of the variance from a sample, we will use: <br><br>
-    <span style="display:inline-block" [mathjax]="'$s_{n} = \\frac{1}{n}\\sum_{i = 1}^{n}(x_{i}-\\overline{x})$'"></span> or the unbiased estimator and knwon as the sample variance <br><br>
-    <span style="display:inline-block" [mathjax]="'$s_{n} = \\frac{1}{n - 1}\\sum_{i = 1}^{n}(x_{i}-\\overline{x})$'"></span>
+  <p>  <strong> The Mean </strong>of a distribution gives us a quantifiable way of
+  measuring expected value (the center of gravity) of a distribution.</p>
+    Mathematically, the Mean of a distribution is defined as <span style="display:inline-block" [mathjax]="'$\\mu = \\mathbb{E}[X ]$'"></span>. That is,
+    the infinite sum(in the continuous case) of (the value multiplied by the probability of this value to happen).<br>
+    In the case we want to compute the best estimator of the mean from a sample, we will use: <br><br>
+    <span style="display:inline-block" [mathjax]="'$\\mu = \\frac{1}{n}\\sum_{i = 1}^{n}x_{i}$'"></span><br><br>
     <br>
   <div class="calculator">
     <div class="explanation">
@@ -23,7 +22,7 @@
     </div>
   </div>
   <br>
-Total variance is {{variance}}
+Total mean is {{variance}}
 <div *ngIf="true">
   <div style="display: block">
 <!--     <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
