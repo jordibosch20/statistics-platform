@@ -7,25 +7,21 @@
   measuring the tailedness of a distribution.</p>
   Mathematically, the Skewness of a distribution is defined as <span style="display:inline-block" [mathjax]="'$\\mu_{3} = \\mathbb{E}[(\\frac{X - \\mu)}{\\sigma})^{4}]$'"></span>. That is the
   expected value of the differences between the values we observe and the mean.<br>
-    In the case we want to compute the best estimator of the Kurtosis from a sample, we will use: <br><br>
+    In the case we want to compute the best estimator of the Kurtosis from a sample, we will use: <br>
     <span style="display:inline-block" [mathjax]="'$b_{1} = \\frac{\\frac{1}{n}\\sum_{i = 1}^{n}(x_{i}-\\overline{x})^{4}}{(\\frac{1}{n-1}\\sum_{i=1}^{n}(x_{i}-\\overline{x}^{2}))^{\\frac{4}{2}}}$'"></span> <br><br>    <br>
   <div class="calculator">
     <div class="explanation">
-      <div class="wrapper-textarea">
+      <div class="wrapper-textarea" [formGroup]="formGroup">
           <h4>Enter your sample</h4>
-          <textarea></textarea>
+          <textarea formControlName="values"></textarea>
           <div class="buttonCompute">
-            <button class="final">Compute test</button>
+            <button class="final" (click)="compute()">Compute test</button>
           </div>
       </div>
     </div>
   </div>
   <br>
-Total variance is {{variance}}
-<div *ngIf="true">
-  <div style="display: block">
-<!--     <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-      [legend]="barChartLegend" [type]="'bar'">
-    </canvas> -->
+  <div *ngIf="result">
+    The mean is {{result}}
   </div>
 </div>

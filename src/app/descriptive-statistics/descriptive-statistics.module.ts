@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MathjaxModule } from 'mathjax-angular';
 import { NgChartsModule } from 'ng2-charts';
 import { ComponentsModule } from 'src/app/components/components.module';
@@ -40,6 +41,8 @@ import { VarianceComponent } from './pages/variance/variance.component';
     DescriptiveComponentsModule,
     HypothesisTestingComponentsModule,
     NgChartsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MathjaxModule.forChild(),
     DescriptiveStatisticsRoutingModule
   ]

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { mean } from 'simple-statistics';
+import { returnRandomNumbers } from 'src/app/utils/utils';
 
 @Component({
   selector: 'sum-squares',
@@ -6,39 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./sum-squares.component.scss']
 })
 export class SumSquaresComponent {
-  public selected: string = 'breakline';
-  public calculated: boolean = false;
-  public variance: number = 0;
-
-  public commaSelected(): void {
-    this.selected = 'comma';
+  public formGroup: FormGroup = new FormGroup({
+    values: new FormControl(returnRandomNumbers(70))
+  });
+  public result:any;
+  public values: Array<number> = [];
+  public compute(): void {
+    this.values =  this.formGroup.getRawValue().values;
+    this.result = mean(this.values);
   }
-  public breakSelected(): void {
-    this.selected = 'breakline';
-  }
-  public spaceSelected(): void {
-    this.selected = 'space';
-  }
-
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: false
-  };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
-  ];
-
-
-  public computeVariance($event: Array<number>): void {
-    const observations: Array<number> = $event;
-    const mean: number = observations.reduce((prev, curr) => prev + curr, 0) / observations.length;
-    const variance: number = observations.reduce((prev, curr) => prev + (curr - mean) ** 2, 0) / (observations.length - 1);
-    this.variance = variance;
-  }
-
-
 
 }
