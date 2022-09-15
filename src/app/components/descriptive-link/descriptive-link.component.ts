@@ -16,7 +16,7 @@ export class DescriptiveLinkComponent {
   constructor(private router: Router) { }
 
   navigate(): void {
-    this.router.navigate(['/descriptive-statistics' + this.url]);
+    this.router.navigate([this.url]);
   }
 
 }

@@ -1,25 +1,25 @@
-div.container {
-  padding: 16px;
+.container {
+  margin: 32px;
 
-  div.wrapper {
-    margin: 8px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 8px;
-    height: 85vh;
-    padding: 8px;
+  .title {
+    text-align: center;
+  }
 
-    div.leftPanel {
-      border: 1.5px solid orange;
-      box-shadow: 0px 0px 1px #444;
-      padding: 8px;
+  .wrapper-items {
+    display: flex;
+    flex-direction: column;
+
+    .children {
+      border: 1px solid rgb(230, 179, 168);
+      padding-left: 8px;
+      margin: 4px;
     }
 
-    div.rightPanel {
-      border: 1.5px solid orange;
-      box-shadow: 0px 0px 1px #444;
-      padding: 8px;
+    .children:hover {
+      background-color: rgb(243, 216, 210);
+      box-shadow: 1px 1px rgb(243, 216, 210);
     }
+
   }
 
 }
