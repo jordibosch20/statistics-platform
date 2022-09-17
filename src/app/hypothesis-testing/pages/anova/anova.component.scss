@@ -134,6 +134,9 @@ div.container {
           width: 100%;
           background-color: #FFFAF4;
           min-height: 128px;
+          &.blocked{
+            border: 2px solid red;
+          }
         }
       }
     }

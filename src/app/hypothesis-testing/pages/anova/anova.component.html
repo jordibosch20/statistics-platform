@@ -28,7 +28,7 @@
     </div>
     <br>
 
-  <div class="calculator" [formGroup]="formGroup">
+  <div class="calculator" [formGroup]="formGroup" #options="ngForm">
     <div class="parameters">
       <div class="inputs">
         <strong><label for="prova">Choose the number of different treatments:</label></strong><br>
@@ -44,7 +44,7 @@
     <div class="explanation" formArrayName='textAreaFormArray'>
       <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
         <h4>Treatment {{i + 1}}</h4>
-        <textarea formControlName='values'></textarea>
+        <textarea formControlName='values' [class.blocked]="!options.valid"></textarea>
       </div>
     </div>
   </div>

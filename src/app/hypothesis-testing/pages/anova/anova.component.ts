@@ -6,6 +6,7 @@ import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { returnRandomNumbers } from 'src/app/utils/utils';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 'anova',
@@ -16,7 +17,7 @@ export class AnovaComponent implements OnInit {
 
   @ViewChild('targetScroll', { static: false }) private scrollElement!: ElementRef;
 
-  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
+  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) {}
 
   public selected = false;
   public imageToShow1: any;
@@ -32,13 +33,13 @@ export class AnovaComponent implements OnInit {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
+          values: new FormControl(returnRandomNumbers(70), Validator.numericValidation)
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
+          values: new FormControl(returnRandomNumbers(70), Validator.numericValidation)
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
+          values: new FormControl(returnRandomNumbers(70), Validator.numericValidation)
         })
       ])
     }
