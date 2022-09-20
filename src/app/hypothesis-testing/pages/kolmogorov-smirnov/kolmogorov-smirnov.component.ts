@@ -6,6 +6,7 @@ import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { returnRandomNumbers } from 'src/app/utils/utils';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 'kolmogorov-smirnov',
@@ -32,10 +33,10 @@ export class KolmogorovSmirnov implements OnInit {
       significanceLevel: new FormControl(0.05),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         })
       ])
     }

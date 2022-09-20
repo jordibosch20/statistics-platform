@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
 import { returnRandomNumbers } from 'src/app/utils/utils';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 'shapiro-wilk',
@@ -33,7 +34,7 @@ export class ShapiroWilkComponent {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(70))
+          values: new FormControl(returnRandomNumbers(70), Validator.numericValidation)
         })
       ])
     }

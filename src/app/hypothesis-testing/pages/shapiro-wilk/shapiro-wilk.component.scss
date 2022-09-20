@@ -108,6 +108,13 @@ div.container {
           cursor: pointer;
         }
 
+        button.final{
+          &.blocked{
+            border: 2px solid #dddddd;
+            background: #dddddd;
+          }
+        }
+
         button.final:active {
           transform: translateY(2px);
         }

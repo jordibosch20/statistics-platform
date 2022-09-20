@@ -7,6 +7,7 @@ import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
 import { returnRandomNumbers } from 'src/app/utils/utils';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 'mann-whitney',
@@ -33,10 +34,10 @@ export class MannWhitneyComponent {
       significanceLevel: new FormControl(0.05),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         })
       ])
     }
