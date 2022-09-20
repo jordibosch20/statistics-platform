@@ -8,6 +8,7 @@ import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hyp
 import { TTestService } from 'src/app/hypothesis-testing/service/ttest.service';
 import { HypothesisTestingLocator } from 'src/app/locators/hypothesis-testing.locator';
 import { returnRandomNumbers } from 'src/app/utils/utils';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 't-test',
@@ -32,10 +33,10 @@ export class TTestComponent {
       significanceLevel: new FormControl(0.05),
       textAreaFormArray: this.fb.array([
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         }),
         this.fb.group({
-          values: new FormControl(returnRandomNumbers(20))
+          values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
         })
       ])
     }

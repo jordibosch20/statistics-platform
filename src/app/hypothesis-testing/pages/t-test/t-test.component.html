@@ -13,14 +13,15 @@
     </li>
 
     <p></p>
-    <div class="calculator" [formGroup]="formGroup">
+    <div class="calculator" [formGroup]="formGroup" #options="ngForm">
       <div class="parameters">
         <div class="inputs">
           <strong><label for="significance-level">Enter the significance level:</label></strong><br>
           <input type="text" formControlName="significanceLevel">
         </div>
         <div class="buttonCompute">
-        <button class="final" (click)="computeTTest()">Compute test</button>
+          <button class="final" (click)="computeTTest()" [class.blocked]="!options.valid">Compute test</button>
+          <span class="errorMessage" *ngIf="!options.valid">Correctly separate values by comma</span>
         </div>
       </div>
       <div class="explanation" formArrayName='textAreaFormArray'>
