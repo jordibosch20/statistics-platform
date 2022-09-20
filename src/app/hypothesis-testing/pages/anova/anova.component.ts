@@ -77,7 +77,7 @@ export class AnovaComponent implements OnInit {
     this.getTextareasFormArray().controls = [];
     for (let i = 0; i < value; ++i) {
       const textarea = this.fb.group({
-        values: new FormControl(returnRandomNumbers(20))
+        values: new FormControl(returnRandomNumbers(20), Validator.numericValidation)
       });
       this.getTextareasFormArray().push(textarea);
     }

@@ -6,7 +6,7 @@
         <button (click)="selected = !selected" [class.active]="selected === true">
           <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
           <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
-          View Full Explanation
+          View theoretical explanation
         </button>
       </div>
   </div>
@@ -38,13 +38,14 @@
         <input type="text" id="significance-level" value="0.05">
       </div>
       <div class="buttonCompute">
-        <button class="final" (click)="computeAnova()">Compute test</button>
+        <button class="final" (click)="computeAnova()" [class.blocked]="!options.valid">Compute test</button>
+        <span class="errorMessage" *ngIf="!options.valid">Correctly separate values by comma</span>
       </div>
     </div>
     <div class="explanation" formArrayName='textAreaFormArray'>
       <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
         <h4>Treatment {{i + 1}}</h4>
-        <textarea formControlName='values' [class.blocked]="!options.valid"></textarea>
+        <textarea formControlName='values'></textarea>
       </div>
     </div>
   </div>
