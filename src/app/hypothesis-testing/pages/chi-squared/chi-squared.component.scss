@@ -108,6 +108,13 @@ div.container {
           cursor: pointer;
         }
 
+        button.final{
+          &.blocked{
+            border: 2px solid #dddddd;
+            background: #dddddd;
+          }
+        }
+
         button.final:active {
           transform: translateY(2px);
         }
@@ -150,6 +157,9 @@ div.container {
             background-color: #FFFAF4;
             padding: 4px;
             box-sizing: border-box;
+            &.blocked{
+              border: 2px solid red;
+            }
           }
         }
 
@@ -166,6 +176,9 @@ div.container {
             width: 100%;
             background-color: #FFFAF4;
             min-height: 128px;
+            &.blocked{
+            border: 2px solid red;
+          }
           }
         }
       }

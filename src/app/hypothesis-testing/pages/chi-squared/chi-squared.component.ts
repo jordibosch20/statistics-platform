@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
 import { returnRandomNumbers } from 'src/app/utils/utils';
+import { Validator } from 'src/app/utils/validator';
 
 @Component({
   selector: 'chi-squared',
@@ -37,7 +38,7 @@ export class ChiSquaredComponent {
       numberTreatments: new FormControl(this.numberTreatments),
       textAreaFormArray: this.fb.array(
         Array.from({length: this.getTotalCells().length}, (_, ) => this.fb.group({
-          values: new FormControl(returnRandomNumbers(1))
+          values: new FormControl(returnRandomNumbers(1), Validator.numericValidation)
       }))
     )}
   );

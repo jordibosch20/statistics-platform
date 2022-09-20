@@ -6,7 +6,7 @@
           <button (click)="selected = !selected" [class.active]="selected === true">
             <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
             <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
-            View Full Explanation
+            View theoretical explanation
           </button>
         </div>
     </div>
@@ -35,7 +35,7 @@
       </div>
     </div>
       <br>
-    <div class="calculator" [formGroup]="formGroup">
+    <div class="calculator" [formGroup]="formGroup" #options="ngForm">
       <div class="parameters">
         <div class="inputs" [formGroup]="dimensionsFormGroup">
           <strong><label for="significance-level">Enter the significance level:</label></strong><br>
@@ -46,7 +46,8 @@
           <input type="text" id="secondVariable" formControlName='secondVariable'>
         </div>
         <div class="buttonCompute">
-          <button class="final" (click)="computeAnova()">Compute test</button>
+          <button class="final" (click)="computeAnova()" [class.blocked]="!options.valid">Compute test</button>
+          <span class="errorMessage" *ngIf="!options.valid">Correctly separate values by comma</span>
         </div>
       </div>
       <div class="verticalTitle">
@@ -55,8 +56,8 @@
       <div class="explanation" formArrayName='textAreaFormArray'>
         <span class="firstVariableCategories"><b>First Variable categories</b></span>
         <div class="innerContainer" [ngStyle]="gridStyle">
-          <div [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
-            <textarea formControlName='values'>
+          <div [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index"  #options="ngForm">
+            <textarea formControlName='values' [class.blocked]="!options.valid">
             </textarea>
           </div>
         </div>
