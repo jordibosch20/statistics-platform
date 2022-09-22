@@ -4,9 +4,10 @@ import { map, tap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { returnRandomNumbers } from 'src/app/utils/utils';
+import { returnRandomNumbers, cleanData } from 'src/app/utils/utils';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
 import { Validator } from 'src/app/utils/validator';
+import { PapaParseService } from 'ngx-papaparse';
 
 @Component({
   selector: 'kolmogorov-smirnov',
@@ -17,7 +18,8 @@ export class KolmogorovSmirnov implements OnInit {
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
+  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService,
+    private papa: PapaParseService) { }
 
   public selected = false;
   public imageToShow1: any;
@@ -114,4 +116,31 @@ export class KolmogorovSmirnov implements OnInit {
       )
       .subscribe()
   }
+
+  public fileupload(event: any, i:number) {
+    console.log('textarea i is', i);
+    let files = event.target.files;
+    let file: File = files.item(0) as File;
+    let formData = new FormData();
+    formData.append("file", file, file.name);
+    console.log('file is', file);
+
+    var reader = new FileReader();
+    reader.readAsText(file);
+    let test:any = [];
+    reader.onload = (event: any) => {
+      var csv = event.target.result; // Content of CSV file
+      this.papa.parse(csv, {
+        skipEmptyLines: true,
+        header: false,
+        complete: (results) => {
+          // console.log(this.test);
+          console.log('Results are', results.data[0]);
+          let arrayFormGroups = this.getTextareasFormArrayControls();
+          ((arrayFormGroups[i] as FormGroup).get('values') as FormControl).setValue(cleanData(results.data[0]));
+        }
+      });
+    }
+  }
+
 }

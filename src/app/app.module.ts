@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MathjaxModule } from 'mathjax-angular';
 import { NgChartsModule } from 'ng2-charts';
+import { PapaParseModule } from 'ngx-papaparse';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HypothesisTestingModule } from 'src/app/hypothesis-testing/hypothesis-testing.module';
 import { WelcomePageModule } from 'src/app/welcome-page/welcome-page.module';
@@ -27,6 +28,7 @@ import { DistributionsModule } from './distributions/distributions.module';
     HighchartsChartModule,
     DescriptiveStatisticsModule,
     NgChartsModule,
+    PapaParseModule,
     MathjaxModule.forRoot({
       "config": {
         "loader": {

@@ -1,11 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PapaParseService } from 'ngx-papaparse';
 import { combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { AnovaService } from 'src/app/hypothesis-testing/service/anova.service';
 import { HypothesisTestingService } from 'src/app/hypothesis-testing/service/hypothesis-testing.service';
-import { returnRandomNumbers } from 'src/app/utils/utils';
+import { returnRandomNumbers, cleanData } from 'src/app/utils/utils';
 import { Validator } from 'src/app/utils/validator';
 
 @Component({
@@ -18,7 +19,8 @@ export class ShapiroWilkComponent {
 
   @ViewChild('targetScroll', { static: false }) private scrollElement!: ElementRef;
 
-  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService) { }
+  constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService,
+    private papa: PapaParseService) { }
 
   public selected = false;
   public imageToShow1: any;
@@ -120,5 +122,30 @@ export class ShapiroWilkComponent {
     this.selected = !this.selected;
   }
 
+  public fileupload(event: any, i:number) {
+    console.log('textarea i is', i);
+    let files = event.target.files;
+    let file: File = files.item(0) as File;
+    let formData = new FormData();
+    formData.append("file", file, file.name);
+    console.log('file is', file);
+
+    var reader = new FileReader();
+    reader.readAsText(file);
+    let test:any = [];
+    reader.onload = (event: any) => {
+      var csv = event.target.result; // Content of CSV file
+      this.papa.parse(csv, {
+        skipEmptyLines: true,
+        header: false,
+        complete: (results) => {
+          // console.log(this.test);
+          console.log('Results are', results.data[0]);
+          let arrayFormGroups = this.getTextareasFormArrayControls();
+          ((arrayFormGroups[i] as FormGroup).get('values') as FormControl).setValue(cleanData(results.data[0]));
+        }
+      });
+    }
+  }
 
 }

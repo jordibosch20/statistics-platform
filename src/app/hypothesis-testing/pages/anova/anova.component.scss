@@ -115,6 +115,7 @@ div.container {
         &.blocked{
           border: 2px solid #dddddd;
           background: #dddddd;
+          pointer-events: none;
         }
       }
 
@@ -138,6 +139,34 @@ div.container {
         flex-grow: 1;
         text-align: center;
         margin: 0 8px;
+
+        .upload-btn-wrapper {
+          position: relative;
+          overflow: hidden;
+          display: inline;
+          span{
+            font-size:12px;
+            margin-right:12px;
+          }
+        }
+
+        .btn {
+          border: 2px solid gray;
+          color: gray;
+          background-color: white;
+          padding: 8px 8px;
+          border-radius: 8px;
+          font-size: 10px;
+          font-weight: bold;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+          font-size: 100px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+        }
 
         textarea {
           height: 100%;

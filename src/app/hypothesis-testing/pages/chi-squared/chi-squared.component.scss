@@ -112,6 +112,7 @@ div.container {
           &.blocked{
             border: 2px solid #dddddd;
             background: #dddddd;
+          pointer-events: none;
           }
         }
 

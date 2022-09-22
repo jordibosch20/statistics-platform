@@ -29,8 +29,14 @@
     </div>
     <div class="explanation" formArrayName='textAreaFormArray'>
       <div class="wrapper-textarea" [formGroup]="textareaFormGroup" *ngFor="let textareaFormGroup of getTextareasFormArrayControls(); let i=index">
-          <h4>Treatment {{i + 1}}</h4>
-          <textarea formControlName='values'></textarea>
+        <div class="upload-btn-wrapper">
+          <b><span>Treatment {{i + 1}}</span></b>
+          <button class="btn">Upload a CSV</button>
+          <form enctype="multipart/form-data">
+            <input type="file" name="myfile" (change)="fileupload($event, i)"/>
+          </form>
+        </div>
+        <textarea formControlName='values'></textarea>
       </div>
     </div>
   </div>
