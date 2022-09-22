@@ -93,4 +93,15 @@
         </button>
       </div>
     </div>
+    <div class="pdfWrapper" *ngIf="selected">
+      <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
+      [show-borders]="true" [render-text-mode]="1">
+      </pdf-viewer>
+      <div class="closePopup">
+        <button (click)="closePopup()">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+          Close Explanation
+        </button>
+      </div>
+    </div>
   </div>

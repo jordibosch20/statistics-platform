@@ -4,6 +4,29 @@ div.container {
   padding: 32px;
   box-sizing: border-box;
 
+  div.title{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  div.closePopup{
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0.5px solid rgb(219, 146, 146);
+      border-radius: 2px;
+      background-color: #e4c8af;
+      cursor: pointer;
+      padding: 15px;
+      margin:15px;
+    }
+    button.active{
+      background-color:#e4d8cd;
+    }
+  }
+
   .hypothesis {
 
     display: flex;
@@ -149,6 +172,19 @@ div.container {
           min-height: 128px;
         }
       }
+    }
+  }
+  div.pdfWrapper{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    z-index: 10000;
+    position:absolute;
+    top: 55px;
+    width: 100%;
+
+    button{
+      height: 18px;
     }
   }
 }

@@ -23,6 +23,7 @@ export class TTestComponent {
   constructor(private fb: FormBuilder, private domSanitizer: DomSanitizer, private tTestService: TTestService, private anovaService: AnovaService, private hypothesisTestingService: HypothesisTestingService,
     private papa: PapaParseService) { }
 
+  public selected = false;
   public imageToShow: any;
   public isComputing: boolean = false;
   public imageToShow1: any;
@@ -44,6 +45,9 @@ export class TTestComponent {
     }
   );
 
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/ttest.pdf?alt=media&token=1776c7e6-9b74-46e5-8f51-c42bcce92e05";
+
+
   dtOptions: DataTables.Settings = {};
 
   public getTextareasFormArray(): FormArray {
@@ -63,6 +67,10 @@ export class TTestComponent {
       return value.split(',').map(x => Number(x))
     }
     return value;
+  }
+
+  public closePopup():void{
+    this.selected = !this.selected;
   }
 
   public computeTTest(): any {

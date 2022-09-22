@@ -1,6 +1,17 @@
 <side-modal></side-modal>
 <div #prova class="container">
-  <h2-title [title]="'What is Kolmogorov Smirnov?'" class="title"></h2-title>
+
+  <div class="title">
+    <h2-title [title]="'What is Kolmogorov Smirnov?'" class="title"></h2-title>
+      <div class="knowMore">
+        <button (click)="selected = !selected" [class.active]="selected === true">
+          <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
+          View theoretical explanation
+        </button>
+      </div>
+  </div>
+
   <p> Kolmogorov Smirnov is a widely used test in statistics that tells us if two populations come from the same population or not. </p>
   <p>
 Our null hypothesis will be the two sets of samples come from the same (unknown) distribution. We will try to establish an statistic and set some p-values. In order to do that we will
@@ -57,5 +68,16 @@ compute the empirical distributions function for the two samples. <br><br>Our st
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="pdfWrapper" *ngIf="selected">
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
+    [show-borders]="true" [render-text-mode]="1">
+    </pdf-viewer>
+    <div class="closePopup">
+      <button (click)="closePopup()">
+        <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+        Close Explanation
+      </button>
+    </div>
   </div>
 </div>

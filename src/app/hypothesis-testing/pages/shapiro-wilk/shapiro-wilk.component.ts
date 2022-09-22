@@ -42,7 +42,7 @@ export class ShapiroWilkComponent {
     }
   );
 
-  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/TFM%20(2)-10-12.pdf?alt=media&token=497ed7a9-d4b9-4a02-8ec7-66dd5b08d71f";
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/saphiro-wilk.pdf?alt=media&token=a443c9ee-00c8-4b99-974a-dd5a5f36fed9";
 
   dtOptions: DataTables.Settings = {};
 

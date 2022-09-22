@@ -44,6 +44,9 @@ export class KolmogorovSmirnov implements OnInit {
     }
   );
 
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/kolmogorov-smirnov.pdf?alt=media&token=300ac8f6-34de-4604-aca1-6711f0cd8586";
+
+
   public getTextareasFormArray(): FormArray {
     return this.formGroup.get('textAreaFormArray') as FormArray
   }
@@ -87,6 +90,10 @@ export class KolmogorovSmirnov implements OnInit {
       return value.split(',').map(x => Number(x))
     }
     return value;
+  }
+
+  public closePopup():void{
+    this.selected = !this.selected;
   }
 
   public computeAnova(): any {

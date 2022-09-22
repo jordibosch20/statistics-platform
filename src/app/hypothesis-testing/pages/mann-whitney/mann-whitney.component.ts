@@ -45,6 +45,8 @@ export class MannWhitneyComponent {
     }
   );
 
+  public pdfSrc = "https://firebasestorage.googleapis.com/v0/b/statistics-test-74f2e.appspot.com/o/mann-whitney.pdf?alt=media&token=cfc73a3c-edb9-488f-b4f4-21c73b4697b1";
+
   public getTextareasFormArray(): FormArray {
     return this.formGroup.get('textAreaFormArray') as FormArray
   }
@@ -127,6 +129,10 @@ export class MannWhitneyComponent {
     .map(
       (value:any) => value['MWU']
     );
+  }
+
+  public closePopup():void{
+    this.selected = !this.selected;
   }
 
   public fileupload(event: any, i:number) {

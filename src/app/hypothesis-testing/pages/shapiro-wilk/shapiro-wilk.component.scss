@@ -213,6 +213,20 @@ div.container {
         height: 18px;
       }
     }
+
+    div.pdfWrapper{
+      display: flex;
+      flex-direction: row;
+      background-color:white;
+      z-index: 10000;
+      position:absolute;
+      top: 55px;
+      width: 100%;
+
+      button{
+        height: 18px;
+      }
+    }
   }
 
   @media screen and (max-width: 480px) {

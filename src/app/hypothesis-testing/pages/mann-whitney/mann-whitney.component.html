@@ -1,6 +1,15 @@
 <side-modal></side-modal>
 <div #prova class="container">
-  <h2-title [title]="'What is Man Whitney?'" class="title"></h2-title>
+  <div class="title">
+    <h2-title [title]="'What is Man Whitney?'" class="title"></h2-title>
+      <div class="knowMore">
+        <button (click)="selected = !selected" [class.active]="selected === true">
+          <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
+          View theoretical explanation
+        </button>
+      </div>
+  </div>
   <p> Man Whitney is a widely used test in statistics that tells us if two populations come from the same population or not. </p>
   <p>
     Also known as the <b>U-test</b> or <b>Range Sum</b> by Wilcoxon, it is used to check if, given two groups of samples, the probability that x (coming from the first group) being
@@ -51,5 +60,16 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="pdfWrapper" *ngIf="selected">
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
+    [show-borders]="true" [render-text-mode]="1">
+    </pdf-viewer>
+    <div class="closePopup">
+      <button (click)="closePopup()">
+        <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+        Close Explanation
+      </button>
+    </div>
   </div>
 </div>

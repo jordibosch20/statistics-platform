@@ -1,6 +1,15 @@
 <side-modal></side-modal>
 <div class="container">
+  <div class="title">
     <h2-title [title]="'What is T-Test?'" class="title"></h2-title>
+      <div class="knowMore">
+        <button (click)="selected = !selected" [class.active]="selected === true">
+          <img src="assets/explain-more-down-arrow.svg" alt="Statistics Title" *ngIf="!selected">
+          <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title" *ngIf="selected">
+          View theoretical explanation
+        </button>
+      </div>
+  </div>
     <p> T - test is used to compare two different means from two different groups and establish if they have significant differences or not</p>
     <p>
       Supouse we have two diferent sets of flower sizes. We get a collection of 25 flowers of each of the two different species. We want to formulate
@@ -109,5 +118,16 @@
       </tr>
     </tbody>
   </table>
+  </div>
+    <div class="pdfWrapper" *ngIf="selected">
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [fit-to-page]="true" style="width: 60%; height: 100vh"
+    [show-borders]="true" [render-text-mode]="1">
+    </pdf-viewer>
+    <div class="closePopup">
+      <button (click)="closePopup()">
+        <img src="assets/explain-less-up-arrow.svg" alt="Statistics Title">
+        Close Explanation
+      </button>
+    </div>
   </div>
 </div>
