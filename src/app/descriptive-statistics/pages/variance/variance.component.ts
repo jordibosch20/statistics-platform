@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { variance } from 'simple-statistics';
+import { variance, standardDeviation, sampleStandardDeviation} from 'simple-statistics';
 import { returnRandomNumbers } from 'src/app/utils/utils';
 
 @Component({
@@ -13,6 +13,8 @@ export class VarianceComponent {
     values: new FormControl(returnRandomNumbers(70))
   });
   public result:any;
+  public resultStandardDeviation:any;
+  public resultSampleStandardDeviation:any;
   public values: Array<number> = [];
 
   private transformIntoArray(value: string | Array<number>): Array<number>{
@@ -26,5 +28,7 @@ export class VarianceComponent {
     this.values =  this.formGroup.getRawValue().values;
     this.values = this.transformIntoArray(this.values);
     this.result = variance(this.values);
+    this.resultStandardDeviation = standardDeviation(this.values);
+    this.resultSampleStandardDeviation = sampleStandardDeviation(this.values);
   }
 }

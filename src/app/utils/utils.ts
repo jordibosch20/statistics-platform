@@ -6,6 +6,14 @@ export function returnRandomNumbers(number: number): Array<number> {
     return randomArray;
 }
 
+export function returnNonZeroRandomNumbers(number: number): Array<number> {
+    const randomArray: Array<number> = [];
+    for (let i = 0; i < number; ++i) {
+        randomArray.push(Math.floor(Math.random() * 100) + 1)
+    }
+    return randomArray;
+}
+
 
 export function cleanData(input:Array<string>){
     let result: Array<number> = [];

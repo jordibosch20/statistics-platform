@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { mean } from 'simple-statistics';
-import { returnRandomNumbers } from 'src/app/utils/utils';
+import { returnNonZeroRandomNumbers } from 'src/app/utils/utils';
 
 @Component({
   selector: 'sum-inverses',
@@ -10,7 +10,7 @@ import { returnRandomNumbers } from 'src/app/utils/utils';
 })
 export class SumInversesComponent {
   public formGroup: FormGroup = new FormGroup({
-    values: new FormControl(returnRandomNumbers(70))
+    values: new FormControl(returnNonZeroRandomNumbers(70))
   });
   public result:any;
   public values: Array<number> = [];

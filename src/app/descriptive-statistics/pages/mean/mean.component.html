@@ -1,14 +1,23 @@
 <side-modal-descriptive-calculators></side-modal-descriptive-calculators>
 <div #prova class="container">
   <div class="title">
-    <h2-title [title]="'Mean Calculator'" class="title"></h2-title>
+    <h2-title [title]="'Mean, Median, Mode Calculator'" class="title"></h2-title>
   </div>
-  <p>  <strong> The Mean </strong>of a distribution gives us a quantifiable way of
-  measuring expected value (the center of gravity) of a distribution.</p>
+  <p>
+  <strong> The Mean </strong>of a distribution gives us a quantifiable way of
+  measuring expected value (the center of gravity) of a distribution.<br><br>
+  <strong> The Median </strong>of a distribution/sample is the value that separates
+  the higher half from the lower half (the value in the 'middle').<br><br>
+  <strong> The Mode </strong>of a distribution/sample is the most repeated value.<br><br>
+  </p>
     Mathematically, the Mean of a distribution is defined as <span style="display:inline-block" [mathjax]="'$\\mu = \\mathbb{E}[X ]$'"></span>. That is,
     the infinite sum(in the continuous case) of (the value multiplied by the probability of this value to happen).<br>
     In the case we want to compute the best estimator of the mean from a sample, we will use: <br><br>
     <span style="display:inline-block" [mathjax]="'$\\mu = \\frac{1}{n}\\sum_{i = 1}^{n}x_{i}$'"></span><br><br>
+    The median of a distribution is defined as any value such than <span style="display:inline-block" [mathjax]="'$n$'"></span> that verifies:
+    <span style="display:inline-block" [mathjax]="'$\\int_{-\\infty}^{n}dF(x) \\geq \\frac{1}{2}$'"></span> and
+    <span style="display:inline-block" [mathjax]="'$\\int_{n}^{\\infty}dF(x) \\geq \\frac{1}{2}$'"></span>where <span style="display:inline-block"
+    [mathjax]="'$F(x)$'"></span> is the distribution function.<br><br>
     <br>
     <div class="calculator">
       <div class="explanation">
@@ -23,6 +32,8 @@
     </div>
   <br>
   <div *ngIf="result">
-  The mean is <b>{{result}}</b>
+  The mean is <b>{{result}}</b><br>
+  The median is <b>{{resultMedian}}</b><br>
+  The mode is <b>{{resultMode}}</b><br>
   </div>
 </div>
