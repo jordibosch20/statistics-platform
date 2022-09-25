@@ -62,10 +62,10 @@
   </popup>
   <div *ngIf="resultsAnovaNormality">
     <h2>Normality test (Saphiro-Wilk)</h2>
-    <p>After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
+    After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
       If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
       we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
-    </p>
+    More information about the meaning of each cell value <b><a href="https://pingouin-stats.org/generated/pingouin.normality.html"> here</a></b><br><br>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <tr>
@@ -85,6 +85,7 @@
     <h2>Homocedasticity Test</h2>
     In order to compute T Test, we should make sure variance is the same in both groups. Levene's Test help us
     verify this assumptions. 3rd row states if we should accept the null hypothesis (all variances over the treatments are equal) or reject it.<br><br>
+    More information about the meaning of each cell value <b><a href="https://pingouin-stats.org/generated/pingouin.homoscedasticity.html"> here</a></b><br><br>
     <div *ngIf="resultsHomocedasticity">
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
@@ -104,6 +105,7 @@
   </div>
   <div *ngIf="resultstTestComputation">
     <h2>T Test Analysis</h2>
+    More information about the meaning of each cell value <b><a href="https://pingouin-stats.org/generated/pingouin.ttest.html"> here</a></b><br><br>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <tr>

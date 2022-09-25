@@ -226,7 +226,7 @@
         needed to be taken into account.
     </p>
     <li>First Approach: Lets try to return multiple images using the same Http Request! It should be really easy. Reality turned out to be way more complicated.
-        There is no MIME type for returning multiple images, and thus it can not be done. Maybe there is some qkind of special tweak that allows it but after digging
+        There is no MIME type for returning multiple images, and thus it can not be done. Maybe there is some kind of special tweak that allows it but after digging
         many hours could not achieve it.
     </li>
     <li>Second Approach: Build a zip on the backend, send it using the correct MIME type to the frontend. Then unzip it on client side and display all images.
@@ -253,15 +253,7 @@
     </li>
 
     <h2>Weekly 9 goals</h2>
-    I have one big announcement to make...I resigned my job! The reasons have something to do with the fact I want more time for this project but it is way more related to the fact
-    I could not picture myself a lot more time there. My company platform is great, but since we only
-    have 150 customers we don't deal with any scalability problems and sometimes I feel that I want a bigger challenge. I would love to see how big systems
-    scale and see that the code that I produce has a wider exposure.<br>
-    I felt that I needed a change on the mid term and also was excited for the opportunity to be some time working full time in this project.<br>
-    Both last week I started looking for another options and I will continue doing that this week, but that also means that I have full time to produce code for this project until I get a new job! So...
-    extremely excited for this opportunity.
-
-    A part from that we finally completed 1 important tasks
+    Finally completed some important tasks:
     <li>Added all latex explanation for ANOVA: We tryied to be mathematically formal and make sure user would understand the underlying concepts </li>
     <h2>Weekly 10 goals</h2>
     <li>Added multiple images return</li>
@@ -272,6 +264,50 @@
         State is becoming bigger and lots of components are talking to themselves independently. This is a
         common frontend problem. Solution? Taking the Redux pill.
     </li>
-
+    <h2>Weekly 19 goals</h2>
+    I missed adding all my goals for the previous weeks :(. Sorry about that. Over this 8 weeks
+    I have:
+    <li>Added all other hypothesis testing calculators. Once the ANOVA was finisished it
+        was way faster to create the other calculators. I could reuse many components and
+        reduce a lot the amount of code (and so time!) needed.
+    </li>
+    <li>Added all other descriptive statistics calculators</li>
+    <li>Added the theoretical explanations behind the tests. Right now, there
+        is a button "View theoretical explanation", that renders a PDF with an explanation
+        of what is behind the tests. This will allow more advanced/technical students
+        to dive deep into the inner workings of the method as well as using the results.
+    </li>
+    <li>My master thesis teacher suggested adding the option of uploading
+        CSV instead of copy-pasting the values. I though it was a great idea,
+        specially for cases where you have an extreme amount of values. Added this
+        feature some weeks ago.
+    </li>
+        <div class="anova-images">
+            <img width="45%" [src]="'assets/img/anova-csv.png'">
+            <img width="45%" [src]="'assets/img/anova-explanation.png'">
+        </div>
+        <li>Bought a domain name and put the website under that domain.
+            All over the year I've liked the domain name <a href="http://www.statisticsworld.com/">statisticsworld.com</a>
+            but I forgot to check if it was available / I looked at it some months ago
+            and though no one would buy it... and...it is not :( <br>
+            I contacted the owner and they asked me for 1155 USD 😅😅😅😅
+        That's why I ended up buying <a href="http://www.stats-world.com/">stats-world.com</a> for 12EUR
+    </li>
+    Some important things about buying a domain:
+    <li>It should be easy to remember</li>
+    <li>It would be nice to have SSL certificates it it. (that is the https encrypted).
+        This is extremely important in the case you are dealing with sensitive information
+        (e.g passwords and credit card numbers). Basically, if you don't have it, an attacker
+        can steal all your client sensitive data. <br>
+        A part from that, browsers sometimes pop up a warning to the user that they might
+        get into a dangerous website and for sure don't want that
+    </li>
+    Once the domain is bought some things need to happen. When a user enters a website URL in the searcher,
+    there are some DNS resolutions in order to get the IP of the hosting files and be able to download
+    and render them.<br>
+    We should add a record (A type record), with the IP of our hosting. This way, DNS resolutions will
+    be able to find it and serve the end user.<br><br>
+    Will leave it like this for the moment. Website is done and everything is working more or less 'properly'.
+    Lets leave it here.
     </div>
 </div>

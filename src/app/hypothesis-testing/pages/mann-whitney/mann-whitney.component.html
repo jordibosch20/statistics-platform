@@ -50,6 +50,7 @@
     </div>
   </div>
   <div *ngIf="resultsMannWhitney">
+    More information about the meaning of each cell value <b><a href="https://pingouin-stats.org/generated/pingouin.mwu.html"> here</a></b><br><br>
     <table datatable [dtOptions]="dtOptions" class="row-border hover">
       <thead>
         <th *ngFor="let title of getKeys(resultsMannWhitney)">{{title}}

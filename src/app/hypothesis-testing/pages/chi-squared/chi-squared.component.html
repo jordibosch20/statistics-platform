@@ -75,9 +75,9 @@
       </div>
     </div>
  <div *ngIf="resultsChiSquared">
-      <h2>Chi Squared test (Saphiro-Wilk)</h2>
-      <p>We will apply Chi Squared Independence test to our data. In the results we will see the p-value associated with the test.<br><br>
-      </p>
+      <h2>Chi Squared test</h2>
+      We will apply Chi Squared Independence test to our data. In the results we will see the p-value associated with the test.<br><br>
+    More information about the meaning of each cell value <b><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html"> here</a></b><br><br>
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
           <tr>
