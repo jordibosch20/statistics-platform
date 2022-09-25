@@ -10,10 +10,10 @@
         </button>
       </div>
   </div>
-    <p> T - test is used to compare two different means from two different groups and establish if they have significant differences or not</p>
+    <p> T - test is used to compare different means from two different groups and establish if there exist a significative difference or not</p>
     <p>
-      Supouse we have two diferent sets of flower sizes. We get a collection of 25 flowers of each of the two different species. We want to formulate
-      if there exists signficant differences between the sizes of both flowers or it is just product of randomnes.
+      Example: Assume we have two diferent sets of flower sizes. We get a collection of 25 flowers of each kind of the two different species. We want to analyze
+      if there exist a signficant difference between the sizes of both flowers or it is just product of randomnes.
     </p>
     <strong>Hypothesis needed:</strong>
     <li>Both groups are independent</li>
@@ -62,7 +62,7 @@
   </popup>
   <div *ngIf="resultsAnovaNormality">
     <h2>Normality test (Saphiro-Wilk)</h2>
-    After seeing the plots we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
+    After seeing the plots, we will apply Shapiro-Wilk test to our data. This tests aims to verify the null hypothesis (Data on each group is normal).
       If the p-values we obtain are smaller than our significance level, we will reject the null hytpothesis. We can see on the third row, a boolean variable stating if in each treatment
       we can consider data to be normal (accept null hypothesis) or we should reject it (H1 hypothesis).<br><br>
     More information about the meaning of each cell value <b><a href="https://pingouin-stats.org/generated/pingouin.normality.html"> here</a></b><br><br>

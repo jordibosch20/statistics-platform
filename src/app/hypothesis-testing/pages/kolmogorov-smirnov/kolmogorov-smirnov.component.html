@@ -12,15 +12,15 @@
       </div>
   </div>
 
-  <p> Kolmogorov Smirnov is a widely used test in statistics that tells us if two populations come from the same population or not. </p>
+  <p> Kolmogorov Smirnov is a statistics test that tells us if two samples come from the same population(distribution) or not. </p>
   <p>
-Our null hypothesis will be the two sets of samples come from the same (unknown) distribution. We will try to establish an statistic and set some p-values. In order to do that we will
+Our null hypothesis will be the two sets of samples coming from the same (unknown) distribution. We will try to establish an statistic and set some p-values. In order to do that we will
 compute the empirical distributions function for the two samples. <br><br>Our statistic will be:
 <span style="display:inline-block" [mathjax]="'$D_{n, m} = \\sup_{x} |(F_{1, n}(x) - F_{2, m}(x))|$'"></span>. The null hypothesis is rejected at level <span style="display:inline-block" [mathjax]="'$\\alpha$'"></span> if
 <span style="display:inline-block" [mathjax]="'$D_{n, m} > c(\\alpha)\\sqrt{\\frac{n + m}{n*m}}$'"></span> being <span style="display:inline-block" [mathjax]="'$c(\\alpha)$'"></span> an already precomputed table and
-<span style="display:inline-block" [mathjax]="'$\n$'"></span> and <span style="display:inline-block" [mathjax]="'$\m$'"></span> de number of observations in each sample.
+<span style="display:inline-block" [mathjax]="'$n$'"></span> and <span style="display:inline-block" [mathjax]="'$\m$'"></span> de number of observations in each sample.
   </p>
-    We want to test the null hypothesis <span style="display:inline-block" [mathjax]="'$H0$'"></span>: which states that there is no differences between the mean of the different groups, with respect to the alternative
+    We want to test the null hypothesis <span style="display:inline-block" [mathjax]="'$H0$'"></span>: which states that there is no difference between the mean of the different groups, with respect to the alternative
     hypothesis <span style="display:inline-block" [mathjax]="'$H1$'"></span>, which states that there exists at least a pair of distinct means.
     Formally this can be staten as: <br><br>
     <div class="hypothesis">
