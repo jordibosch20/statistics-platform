@@ -29,5 +29,4 @@ export class HarmonicMeanComponent {
     this.result = harmonicMean(this.values);
   }
 
-
 }

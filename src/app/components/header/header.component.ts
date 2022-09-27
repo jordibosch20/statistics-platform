@@ -13,7 +13,7 @@ export class HeaderComponent {
     // new NavbarTap('Regression coefficients', '/regression-coefficients'),
     new NavbarTap('Descriptive statistcs', '/descriptive-statistics/statistics-list'),
     // new NavbarTap('Distributions graphs', '/distributions'),*/
-    new NavbarTap('RoadMap', '/roadmap')
+    new NavbarTap('RoadMap & Information', '/roadmap')
   ];
 
 }
